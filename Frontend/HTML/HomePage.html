@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>iStudy - HomePage</title>
+		<link rel="stylesheet" href="{% static 'CSS/HomePage.css' %}">
+    </head>
+
+    <body>
+        <main>
+            <div class="Login">
+
+            
+                <form action="" class="log_form" id="log_form">
+                    <img src="{% static 'Pictures/Istudy_Logo.JPG' %}" alt="logo" class="Logo">
+                    
+                    <div class="Login_form">
+                        
+                        <p class="login_lorem">Login to Your Account</p>
+                        
+                        <input type="text" placeholder="Username" class="username">
+                        <input type="password" placeholder="Password" class="password">
+                    
+                        <select name="" id="">
+                            <option value="">Select Auth</option>
+                            <option value="">Admin</option>
+                            <option value="">User</option>
+
+                        </select>
+                        
+                            <button class="Sign_in_Button">Sign in</button>
+                            <button id="sign_in_Google">G+</button>
+                    
+                    </div>
+                
+                </form>
+            </div>
+            
+            
+            <div  class="Register"> 
+                <div class="Register_content" id="Register_content">
+                    
+                    <h1>New Here?</h1>
+                    
+                    <p class="Register_Lorem">Sign up and discover a great way to connect with students</p>
+                    
+                    <a id="sign_up" href="{% url 'WebIStudy:Signup' %}" >Sign Up</a>
+                
+                </div>              
+                <img src="{% static 'Pictures/books.JPG' %}" alt="books with people" class="books" id="books">
+            </div>
+
+        </main>
+
+    </body>
+</html>
