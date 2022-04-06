@@ -7,6 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>iStudy - HomePage</title>
 		<link rel="stylesheet" href="{% static 'CSS/HomePage.css' %}">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="678154098238-b6q0hdk8mmcdg1v1vohr7jf4sslj6vdt.apps.googleusercontent.com">
     </head>
 
     <body>
@@ -30,15 +32,18 @@
                             <option value="">User</option>
 
                         </select>
-                        
+                           <div class="google" style="margin-left: 170px;margin-top: 80px; position: absolute;">
+                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                           </div>
+                           
                             <button class="Sign_in_Button">Sign in</button>
-                            <button id="sign_in_Google">G+</button>
+
                     
                     </div>
-                
+
                 </form>
             </div>
-            
+
             
             <div  class="Register"> 
                 <div class="Register_content" id="Register_content">
