@@ -13,6 +13,13 @@ def ShowSuccess(request):
     return render(request, "HTML/RegisterSuccess.html")
 
 def ShowForums(request, oid):
+    user = User.objects.filter(user_name = oid)
+
+    if(user.exists() == False):
+        user= User(user_name = oid)
+        user.save()
+
+
     user = User.objects.get(user_name = oid)
     return render(request, "HTML/ForumSelect.html", {'user':user})
 
