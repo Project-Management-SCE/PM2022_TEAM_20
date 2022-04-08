@@ -30,8 +30,8 @@
             </div>
 
             <div id="Profile_Select">
-                <a class="Profile_Option" href="{% url 'WebIStudy:ChangeDetails' user.user_name %}">Add Info details</a>
-                <a class="Profile_Option" href="">Change Account</a>
+                <a class="Profile_Option" href="{% url 'WebIStudy:ChangeDetails' user.user_name %}">Change Password</a>
+                <a class="Profile_Option" href="{% url 'WebIStudy:AddInformation' user.user_name %}">Add Information</a>
                 <a class="Profile_Option" href="">Logout</a>
             </div>
         </nav>
