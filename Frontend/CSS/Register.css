@@ -11,31 +11,6 @@ main{
 
 }
 
-#sign_up{
-    cursor: pointer;
-    background-color: #90e0ef;
-    color: black;
-    text-decoration: none;
-
-    font-family: "GothamPro Medium",serif;
-    font-size: 20px;
-    font-weight: 700;
-    
-    border-radius: 30px;
-    border: none;
-    
-    height: 54px;
-    width: 223px;
-    margin-left: 60px;
-    padding-top: 30px;
-    text-align: center;
-    transition: all 40ms  ; 
-}
-#sign_up:hover{
-    background-color: #4dd0e7;
-}
-
-
 button{
     cursor: pointer;
     background-color: #90e0ef;
@@ -98,7 +73,7 @@ h1{
     border-radius: 10px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 
-    display: flex;
+    display: none;
     flex-direction: column;
     text-align: center;
     justify-content: center;
@@ -152,7 +127,16 @@ nav{
     margin-top: 120px;
 }
 
+a{
+    font-size: larger;
+    text-decoration: none;
+    font-family: "GothamPro Medium",serif;
+    font-weight: bold;
+    color: #3a7dcf;
 
+    margin-left: 10px;
+
+}
 
 
 
@@ -289,6 +273,7 @@ a:last-child{
     
 }
 
+
 /*************************************** Register CSS *************************************/
 .Register_Form{
 
@@ -302,7 +287,7 @@ a:last-child{
     border-radius: 10px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 
-    display: none;
+    display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
@@ -460,7 +445,7 @@ input[type="checkbox"]{
     margin-left: 100px;
     margin-top: 200px;
 
-    display: none;
+    display: flex;
     justify-content: center;
     flex-direction: column;
 }
@@ -472,8 +457,61 @@ input[type="checkbox"]{
     margin-top: -170px;
 }
 
-.googlebu{
+
+.password_exist{
+    position:absolute;
+
+    color:red;
+
+    max-width: 10%;
+    max-height: 20px;
+    
+    margin-top: -57px;
+    margin-left: 250px;
+}
+
+.user_exist{
+    position:absolute;
+
+    color: red;
+    max-width: 10%;
+    max-height: 20px;
+    
+    margin-top: -110px;
+    margin-left: 250px;
+}
+.rubik{
+    color:#20B2AA;
+    font-size: 25px;
+    font-family: 'Rubik Bubbles', cursive;
+}
+
+.HomePageReturn{
     position: absolute;
-    text-decoration: none;
-    background-color: #444;
+    margin-top:400px;
+    padding-top: 23px;
+    margin-left: 500px;
+    
+    cursor: pointer;
+    background-color: #90e0ef;
+
+    font-family: "GothamPro Medium",serif;
+    font-size: .875rem;
+    font-weight: 700;
+    
+    border-radius: 30px;
+    border: none;
+    
+    height: 30px;
+    width: 223px;
+    transition: all 40ms  ;
+}
+.HomePageReturn:hover{
+    background-color: #4dd0e7;
+}
+
+.lonelydiv{
+    position: absolute;
+    margin-top: -350px;
+    margin-left: 350px;
 }
