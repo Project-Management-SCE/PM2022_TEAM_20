@@ -20,6 +20,11 @@ def ShowAccountInfo(request, oid):
     user = User.objects.get(user_name = oid)
     return render(request, "HTML/ChangePassword.html", {'user':user})
 
+def AddInformation(request, oid):
+    user = User.objects.get(user_name = oid)
+    return render(request, "HTML/AddInformation.html", {'user':user})
+
+
 def Register(request):
     username = request.POST['reg_username']
     passw = request.POST['reg_password']
@@ -65,3 +70,16 @@ def ChangePassword(request, oid):
 
     return render(request, "HTML/ForumSelect.html" , {'user':user})
 
+def AddInformationToUser(request, oid):
+    user = User.objects.get(user_name = oid)
+
+    User_Study = request.POST['StudyPlace']
+    User_degree = request.POST['Degree']
+    StudyYear = request.POST['year']
+
+    user.campus = User_Study
+    user.degree = User_degree
+    user.study_year = StudyYear
+    user.save()
+
+    return render(request, "HTML/ForumSelect.html" , {'user':user})
