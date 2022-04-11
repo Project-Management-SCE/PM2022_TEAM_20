@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Manager, Employee, Client
+from .models import *
 from WebIStudy import views
 from WebIStudy import Validation
 import unittest
@@ -7,10 +7,6 @@ import unittest
 class URLTests(TestCase):
     #check urls of a local server pages 
 
-    #check login page
-    def test_Login_Page(self):
-        response = self.client.get('')
-        self.assertEqual(response.status_code, 404)
 
     #check Register page
     def test_Register_Page(self):
