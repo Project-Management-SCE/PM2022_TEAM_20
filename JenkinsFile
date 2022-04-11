@@ -34,7 +34,7 @@ pipeline {
             }
             steps{
                 withEnv(["HOME=${env.WORKSPACE}"]){
-                    sh 'python app/manage.py test ./app'
+                    sh 'python IStudy/manage.py test ./IStudy'
                 }
             }
 			
