@@ -10,8 +10,7 @@ class Admin(models.Model):
         return f'user_name: {self.user_name}, password: {self.password}, email: {self.email}'
     
     class Meta:
-        app_label = 'admin'
-        db_table = 'WebIStudy_admin'
+        pass
         
 class User(models.Model):
     user_name = models.CharField(max_length=50)
