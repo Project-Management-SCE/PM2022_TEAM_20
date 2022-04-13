@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import user, response
+from models import *
 from WebIStudy import views
 from WebIStudy import Validation
 import unittest
