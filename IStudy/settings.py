@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'IStudy.apps.AppNameConfig'
+    'IStudy'
     # 'WebIStudy.apps.WebistudyConfig',
     'django.contrib.admin',
     'django.contrib.auth',
