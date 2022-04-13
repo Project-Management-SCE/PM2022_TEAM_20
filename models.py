@@ -11,7 +11,7 @@ class Admin(models.Model):
     
     class Meta:
         app_label = 'admin'
-        db_table = 'admin'
+        db_table = 'WebIStudy_admin'
         
 class User(models.Model):
     user_name = models.CharField(max_length=50)
@@ -27,4 +27,4 @@ class User(models.Model):
     
     class Meta:
         app_label = 'user'
-        db_table = 'user'
+        db_table = 'WebIStudy_user'
