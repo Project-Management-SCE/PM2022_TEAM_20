@@ -9,6 +9,8 @@ class Admin(models.Model):
     def __str__(self):
         return f'user_name: {self.user_name}, password: {self.password}, email: {self.email}'
     
+    class Meta:
+        app_label = 'admin'
 
 class User(models.Model):
     user_name = models.CharField(max_length=50)
@@ -19,7 +21,8 @@ class User(models.Model):
     study_year = models.CharField(max_length=50)
     picture = models.ImageField(upload_to='uploads/')
 
-
-
     def __str__(self):
         return f'user_name: {self.user_name}, password: {self.password},email: {self.email}'
+    
+      class Meta:
+        app_label = 'user'
