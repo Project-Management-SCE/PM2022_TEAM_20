@@ -35,18 +35,4 @@ class Views_Test(TestCase):
         self.assertEquals(True,Validation.Check_Password(123456,1444467))
         
     
-    # check isExistsClient function
-    def test_User_is_exists(self):
-        user = User(user_name = 'Sergey',password = '123456',email='Sergey@gmail.com')
-        user.save()
-        self.assertTrue(True,Validation.isExistsUser('Maor','Sergey@gmail.com'))
-        self.assertFalse(False,Validation.isExistsUser('Vlad','Vlad@gmail.com'))
-        
-    
-    # check Login_Exists function
-    def test_Login(self):                                                                                                
-       self.assertFalse(False,Validation.Login_Exists('User','Sergey','13456'))
-       self.assertTrue(True,Validation.Login_Exists('User','Churkin','111111'))
-       self.assertTrue(True,Validation.Login_Exists('Admin','Maor','123456'))
-       self.assertFalse(False,Validation.Login_Exists('Admin','Vlad','13456'))
        
