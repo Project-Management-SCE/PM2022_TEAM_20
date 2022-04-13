@@ -24,5 +24,5 @@ class User(models.Model):
     def __str__(self):
         return f'user_name: {self.user_name}, password: {self.password},email: {self.email}'
     
-      class Meta:
+    class Meta:
         app_label = 'user'
