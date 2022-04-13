@@ -4,9 +4,11 @@ from WebIStudy import views
 from WebIStudy import Validation
 import unittest
 
+if __name__ == '__main__':
+    unittest.main()
+    
 class URLTests(TestCase):
     #check urls of a local server pages 
-
 
     #check Register page
     def test_Register_Page(self):
