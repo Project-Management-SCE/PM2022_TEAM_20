@@ -1,4 +1,4 @@
-from .models import *
+from models import *
 
 def isExistsUser(username, email2 = None):
     user = User.objects.filter(user_name = username)
