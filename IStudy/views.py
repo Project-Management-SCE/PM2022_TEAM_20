@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from models import *
-from IStudy import Validation
+from IStudy.Validation import *
 
 def HomePage(request):
     return render(request, "HTML/HomePage.html")
