@@ -1,8 +1,8 @@
 from django.urls import path
-from WebIStudy.views import *
+from IStudy.views import *
 from django.urls import include, re_path
 
-app_name = 'WebIStudy'
+app_name = 'IStudy'
 
 urlpatterns = [
     path('',HomePage, name='Login'),
