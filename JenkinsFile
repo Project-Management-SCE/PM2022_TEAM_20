@@ -4,25 +4,25 @@ pipeline {
         stage('Install requirements'){
             agent{
                 docker{
-                    image 'python:3.6'
+                    image 'python:3.7'
                 }
             }
             steps{
                 withEnv(["HOME=${env.WORKSPACE}"]){
-                    sh 'python -m pip install django'
-		    sh 'pip install requests'
+                    sh 'python -m pip install django==2.1.15'
+                    sh 'python -m pip install -r requirements.txt'
                 }
             }
         }
         stage('Compile'){
             agent{
                 docker{
-                    image 'python:3.6'
+                    image 'python:3.7'
                 }
             }
             steps{
                 withEnv(["HOME=${env.WORKSPACE}"]){
-					sh 'python -m compileall ProjectManagement/'//manage.py'
+					sh 'python -m compileall PM2022_TEAM_20//'//manage.py'
                     sh 'pip install django_jenkins'
                 }
             }
@@ -30,7 +30,7 @@ pipeline {
         stage('Tests'){
             agent{
                 docker{
-                    image 'python:3.6'
+                    image 'python:3.7'
                 }
             }
             steps{
@@ -38,7 +38,6 @@ pipeline {
                     sh 'python manage.py test'
                 }
             }
-			
-		}
-	}
+         }
+    }
 }
