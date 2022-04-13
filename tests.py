@@ -1,7 +1,7 @@
 from django.test import TestCase
 from models import *
-from WebIStudy import views
-from WebIStudy import Validation
+from IStudy import views
+from IStudy import Validation
 import unittest
 
 if __name__ == '__main__':
