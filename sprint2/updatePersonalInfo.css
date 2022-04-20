@@ -1,0 +1,80 @@
+body{
+  height:auto;
+  width:auto;
+  background-color: #90e0ef;
+
+}
+.updateForm{
+  width: 80%;
+  height: 947px;
+  background-color: #dff1f3;
+  position: absolute;
+  left:200px;
+}
+.container{
+  background-color: white;
+  height:600px;
+  width:800px;
+  position: absolute;
+  left:350px;
+  top:200px;
+}
+.Logo{
+  position:absolute;
+  left:190px;
+}
+.university{
+  position:absolute;
+  left:300px;
+  top:150px;
+  height:50px;
+  width:200px;
+  background-color: #69f8f8;
+  border-radius: 20px;
+  text-align: center;
+  font-weight:bold;
+  border-style:none;
+}
+
+.degree{
+  position:absolute;
+  left:300px;
+  top:250px;
+  height:50px;
+  width:200px;
+  background-color: #69f8f8;
+  border-radius: 20px;
+  text-align: center;
+  font-weight:bold;
+  border-style:none;
+}
+.year{
+  position:absolute;
+  left:300px;
+  top:350px;
+  height:50px;
+  width:200px;
+  background-color: #69f8f8;
+  border-radius: 20px;
+  text-align: center;
+  font-weight:bold;
+  border-style:none;
+}
+.header{
+  position: absolute;
+  left:250px;
+  top:80px;
+  color:rgb(129, 6, 6);
+  font-family: GothamPro,serif;
+  letter-spacing: 0;
+}
+.update_button{
+  position: absolute;
+  background-color: bisque;
+  height: 40px;
+  width: 120px;
+  border-radius: 20px;
+  left:340px;
+  top:450px;
+  cursor:pointer;
+}
