@@ -10,7 +10,7 @@ class Admin(models.Model):
         return f'user_name: {self.user_name}, password: {self.password}, email: {self.email}'
     
     class Meta:
-        app_label = 'IStudy'
+        app_label = 'WebIStudy'
         db_table = 'Admin'
         
 class User(models.Model):
@@ -26,5 +26,5 @@ class User(models.Model):
         return f'user_name: {self.user_name}, password: {self.password},email: {self.email}'
     
     class Meta:
-        app_label = 'IStudy'
+        app_label = 'WebIStudy'
         db_table = 'User'
