@@ -2,7 +2,7 @@ from django.urls import path
 from IStudy.views import *
 from django.urls import include, re_path
 
-app_name = 'IStudy'
+app_name = 'WebIStudy'
 
 urlpatterns = [
     path('',HomePage, name='Login'),
