@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width initial_scale="1.0">
+
+        
+        <title>iStudy - Forum Select</title>
+        <link rel="stylesheet" href="{% static 'CSS/ForumSelect.css' %}">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+        <script src="{% static 'JAVASCRIPT/ForumSelect.js' %}"></script>
+
+
+        <style>
+            .user_botton{
+              background-image: url('{{f.picture.url}}') ;
+            }
+          </style>
+
+    </head>
+
+    <body>
+        
+        <nav>
+            <div class="Menu">
+                
+                <img src="{% static 'Pictures/Istudy_Logo.JPG' %}" alt="logi" class="logo_image">
+
+                <button class="foruns_button">Forums</button>
+                <button class="user_botton" onclick="Menu()"></button>
+            </div>
+
+            <div id="Profile_Select" style="height: 200px;">
+                <a class="Profile_Option" href="{% url 'WebIStudy:ChangeAdminPassword' user.user_name %}">Change Password</a>
+                <a class="Profile_Option" href="{% url 'WebIStudy:ManageForums' %}">Add Forums</a>
+                <a class="Profile_Option" href="{% url 'WebIStudy:DeletePage' %}">Delete Forums</a>
+                <a class="Profile_Option" href="">Manage Users</a>
+                <a class="Profile_Option" href="{% url 'WebIStudy:Login' %}">Logout</a>
+            </div>
+        </nav>
+
+
+        <section>
+            <div class="Search">
+                <h1>Forums</h1>
+                <input type="text" name="searchbar" id="searchbar" placeholder="&#128270 Search Forum">
+            </div>
+
+        </section>
+
+        
+        <main>
+            <div class="Display" style="align-content:flex-start;">
+                
+
+                {% for i in forum%}
+                    <div class="Forum">
+                        <img src="{{i.picture.url}}" alt="{{i.picture}}" class="forum_image">
+                        <a>{{i.Forum_name}}</a>
+                        <p>
+                            {{i.Description}}
+                        </p>
+                    </div>
+                 {% endfor %}
+            </div>
+        </main>
+
+    </body>
+</html>
