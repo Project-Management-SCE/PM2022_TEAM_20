@@ -23,7 +23,7 @@ pipeline {
             }
             steps{
                 withEnv(["HOME=${env.WORKSPACE}"]){
-					sh 'python -m compileall PM2022_TEAM_20//'//manage.py'
+					sh 'python -m compileall WebIStudy//'//manage.py'
                     sh 'pip install django_jenkins'
                 }
             }
