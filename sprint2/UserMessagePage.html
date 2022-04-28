@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="UserMessagePage.css">
+    <title>User Message Page</title>
+  </head>
+  <body>
+    <nav>
+      <div class="Menu">
+        <a href="ManagerForumPage.html"><button class="back_to_forum">Back to Forum</button></a>
+        <img src="images/Istudy_Logo.JPG" alt="logi" class="logo_image">
+        <a href="forum-management.html"><button class="forums_button">Messages</button></a>
+        <button class="user_botton" onclick="Menu()"></button>
+      </div>
+      <div id="Profile_Select" class="invisible">
+        <a class="Profile_Option" href="updatePersonalInfo.html">Add Info details</a><br>
+        <a class="Profile_Option" href="updateAccountInfo.html">Change Account</a><br>
+        <a class="Profile_Option" href="">Logout</a>
+      </div>
+    </nav>
+    <label id="senderLabel" for="">Sender:</label>
+    <label id="subjectLabel" for="">Subject:</label>
+    <label id="messageLabel" for="">Message:</label>
+    <form class="container" action="index.html" method="post">
+      <div class="entrance">
+        <label class="subject" for="">Sender:</label>
+        <label class="sender" for="">Comment:</label>
+      </div>
+      <div class="entrance">
+        <label class="subject" for="">Sender:</label>
+        <label class="sender" for="">Comment:</label>
+      </div>
+      <div class="entrance">
+        <label class="subject" for="">Sender:</label>
+        <label class="sender" for="">Comment:</label>
+      </div>
+      <div class="entrance">
+        <label class="subject" for="">Sender:</label>
+        <label class="sender" for="">Comment:</label>
+      </div>
+      <div class="entrance">
+        <label class="subject" for="">Sender:</label>
+        <label class="sender" for="">Comment:</label>
+      </div>
+      <button id="addButton" type="button" name="button">Add new comment</button>
+      <div class="newMessage display">
+        <form class="message_form" action="index.html" method="post">
+          <label class="label_your_message" for="">Comment:</label>
+          <textarea class="text_area" name="name" rows="4" cols="40"></textarea>
+          <button id="post" type="button" name="button">Post</button>
+        </form>
+      </div>
+    </form>
+  <script src="UserMessagePage.js"></script>
+  </body>
+</html>

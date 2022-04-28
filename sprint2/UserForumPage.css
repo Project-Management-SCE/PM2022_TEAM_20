@@ -1,0 +1,226 @@
+body{
+    min-height: 946px;
+    max-width: 1920px;
+    background-color: #f8f9fb;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+nav{
+    position: fixed;
+    height: 8%;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #e2e7ea;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.Menu{
+    position: fixed;
+    height: 8%;
+    width: 65%;
+    background-color: white;
+}
+.logo_image{
+    position: absolute;
+    object-fit: cover;
+    max-height: 70px;
+    max-width: 500px;
+    margin-top: 4px;
+    margin-left: -60px;
+}
+.forums_button{
+    cursor: pointer;
+    position: absolute;
+    font-size: 20px;
+    font-weight: bolder;
+    line-height: 30px;
+    color: #182730;
+    font-weight: 500;
+    padding: 0 15px;
+    border-style: none;
+    letter-spacing: .01em;
+    border-bottom: 2px solid rgb(184, 184, 252);
+    margin-top: 30px;
+    margin-left: 300px;
+    padding-bottom: 10px;
+    background-color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.Users_button{
+    cursor: pointer;
+    position: absolute;
+    font-size: 20px;
+    font-weight: bolder;
+    line-height: 30px;
+    color: #182730;
+    font-weight: 500;
+    padding: 0 15px;
+    border-style: none;
+    letter-spacing: .01em;
+    margin-top: 30px;
+    margin-left: 450px;
+    padding-bottom: 10px;
+    background-color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.user_botton{
+    cursor: pointer;
+    object-fit: cover;
+    position: absolute;
+    background-image: url("user.JPG") ;
+    border-radius: 100%;
+    border-style: none;
+    background-size: cover;
+    height: 70px;
+    width: 70px;
+    margin-left: 1140px;
+}
+#Profile_Select{
+    position: fixed;
+    background-color: white;
+    margin-left: 1200px;
+    margin-top: 70px;
+    width: 200px;
+    height: 100px;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-items: flex-start;
+    flex-wrap: wrap;
+}
+.Profile_Option{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    color: rgb(146, 146, 247);
+    cursor: pointer;
+    background-color: white;
+    border-bottom: 2px solid rgb(184, 184, 252);
+}
+.Profile_Option:first-child
+{
+    margin-top: 2px;
+}
+.invisible{
+  visibility: hidden;
+}
+h1{
+    position: absolute;
+    color: #303344;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: .01em;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin-top: -40px;
+    top:150px;
+    left:650px;
+}
+.container{
+  border-style:solid;
+  border-width: 3px;
+  position:relative;
+  height:600px;
+  width:800px;
+  overflow: scroll;
+  top:200px;
+  left:500px;
+  background-color: #77C1F1;
+  border-radius: 10px;
+}
+.entrance{
+  position: relative;
+  border-style:solid;
+  border-width: 2px;
+  width:600px;
+  height:100px;
+  left:100px;
+  margin-top:30px;
+  background-color: #f8f9fb;
+  border-radius: 5px;
+}
+.subject{
+  position: relative;
+  font-size: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  top:10px;
+  left:50px;
+}
+.sender{
+  position: relative;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
+  top:45px;
+  left:-24px;
+}
+.view{
+  position: relative;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
+  top:70px;
+  left:105px;
+  text-decoration: none;
+  color: #518697;
+}
+.view:hover{
+  color:#619C45;
+}
+#addButton{
+  position: relative;
+  margin-top: 30px;
+  left:300px;
+  height:40px;
+  width:200px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
+  border-radius: 20px;
+  background-color: #F5C87A;
+  cursor: pointer;
+}
+#addButton:hover{
+  background-color: white;
+}
+.newMessage{
+  position: relative;
+  border-style:solid;
+  border-width: 2px;
+  width:600px;
+  height:150px;
+  left:100px;
+  margin-top:30px;
+}
+.display{
+  display: none;
+}
+.message_form{
+  position: relative;
+}
+.subject_input{
+  position: relative;
+  left:50px;
+  top:10px;
+}
+.label_your_message{
+  position: relative;
+  font-size: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  top:40px;
+  left:-221.5px;
+}
+.text_area{
+  position: relative;
+  left:130px;
+  top:30px;
+}
+#post{
+  position: relative;
+  left:170px;
+  top:20px;
+  height:30px;
+  width:60px;
+  font-size: 15px;
+  font-family: 'Roboto Condensed', sans-serif;
+}

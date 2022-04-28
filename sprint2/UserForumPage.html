@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="UserForumPage.css">
+    <title>User Forum Page</title>
+  </head>
+  <body>
+    <nav>
+      <div class="Menu">
+        <img src="images/Istudy_Logo.JPG" alt="logi" class="logo_image">
+        <a href="forum-management.html"><button class="forums_button">Forum Page</button></a>
+        <a href="UserManagement.html"><button class="Users_button">Users</button></a>
+        <button class="user_botton" onclick="Menu()"></button>
+      </div>
+      <div id="Profile_Select" class="invisible">
+        <a class="Profile_Option" href="updatePersonalInfo.html">Add Info details</a><br>
+        <a class="Profile_Option" href="updateAccountInfo.html">Change Account</a><br>
+        <a class="Profile_Option" href="">Logout</a>
+      </div>
+    </nav>
+    <h1>Welcome to <spawn>Computer Science</spawn> Forum</h1>
+    <form class="container" action="index.html" method="post">
+      <div class="entrance">
+        <label class="subject" for="">Subject:</label>
+        <label class="sender" for="">Sender:</label>
+        <a  class="view" href="#">View message</a>
+      </div>
+      <div class="entrance">
+        <label class="subject" for="">Subject:</label>
+        <label class="sender" for="">Sender:</label>
+        <a  class="view" href="#">View message</a>
+      </div>
+      <div class="entrance">
+        <label class="subject" for="">Subject:</label>
+        <label class="sender" for="">Sender:</label>
+        <a  class="view" href="#">View message</a>
+      </div>
+      <div class="entrance">
+        <label class="subject" for="">Subject:</label>
+        <label class="sender" for="">Sender:</label>
+        <a  class="view" href="#">View message</a>
+      </div>
+      <div class="entrance">
+        <label class="subject" for="">Subject:</label>
+        <label class="sender" for="">Sender:</label>
+        <a  class="view" href="#">View message</a>
+      </div>
+      <button id="addButton" type="button" name="button">Add new message</button>
+      <div class="newMessage display">
+        <form class="message_form" action="index.html" method="post">
+          <label class="subject" for="">Subject:</label>
+          <input class="subject_input" type="text" name="" value="">
+          <label class="label_your_message" for="">Message:</label>
+          <textarea class="text_area" name="name" rows="4" cols="40"></textarea>
+          <button id="post" type="button" name="button">Post</button>
+        </form>
+      </div>
+    </form>
+  <script src="UserForumPage.js"></script>
+  </body>
+</html>
