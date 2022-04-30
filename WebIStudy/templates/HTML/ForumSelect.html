@@ -15,6 +15,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 
         <script src="{% static 'JAVASCRIPT/ForumSelect.js' %}"></script>
+
+
+        <style>
+            .user_botton{
+              background-image: url('{{user.picture.url}}') ;
+            }
+          </style>
+
     </head>
 
     <body>
@@ -24,8 +32,11 @@
                 
                 <img src="{% static 'Pictures/Istudy_Logo.JPG' %}" alt="logi" class="logo_image">
 
-                <button class="foruns_button">Forums</button>
-                <button class="Mail_button">Mail</button>
+                <button class="foruns_button" id="for_button">Forums</button>
+
+                {% if user.manager == "Manager"%}
+                    <button class="foruns_button2" id="man_button" style="margin-left: 400px;" onclick="Manage()">Manage</button>
+                {% endif %}
                 <button class="user_botton" onclick="Menu()"></button>
             </div>
 
@@ -58,8 +69,24 @@
                     </p>
                 </div>
              {% endfor %}
-           
-        </main>
 
+
+             <div class="Forum2" id="lastForum">
+                
+                <form action="{% url 'WebIStudy:ManageForum' user.user_name%}" method="post">
+                    {% csrf_token %} 
+                        <select name="select" id="">
+                                <option value="null">Select Forum</option>
+                            {% for i in forum%}
+                                <option value="{{i.Forum_name}}" >{{i.Forum_name}}</option>
+                            {% endfor %}
+                        </select>
+
+                    <input type="password" name="password" id="" placeholder="password">
+
+                    <button class="SpecialKaftor">Submit</button>
+                </form>
+            </div> 
+        </main>
     </body>
 </html>

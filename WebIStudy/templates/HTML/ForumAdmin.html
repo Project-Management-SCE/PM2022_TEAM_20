@@ -19,7 +19,7 @@
 
         <style>
             .user_botton{
-              background-image: url('{{f.picture.url}}') ;
+              background-image: url('{{user.picture.url}}') ;
             }
           </style>
 
@@ -35,12 +35,13 @@
                 <button class="foruns_button">Forums</button>
                 <button class="user_botton" onclick="Menu()"></button>
             </div>
-
+   
             <div id="Profile_Select" style="height: 200px;">
                 <a class="Profile_Option" href="{% url 'WebIStudy:ChangeAdminPassword' user.user_name %}">Change Password</a>
                 <a class="Profile_Option" href="{% url 'WebIStudy:ManageForums' %}">Add Forums</a>
                 <a class="Profile_Option" href="{% url 'WebIStudy:DeletePage' %}">Delete Forums</a>
-                <a class="Profile_Option" href="">Manage Users</a>
+                <a class="Profile_Option" href="{% url 'WebIStudy:UsersManage' user.user_name %}">Manage Users</a>
+                <a class="Profile_Option" href="{% url 'WebIStudy:AddPassword' user.user_name %}">Add Forum Password</a>
                 <a class="Profile_Option" href="{% url 'WebIStudy:Login' %}">Logout</a>
             </div>
         </nav>
