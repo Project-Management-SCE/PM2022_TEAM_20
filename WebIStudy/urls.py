@@ -22,6 +22,13 @@ urlpatterns = [
     re_path(r'ChangedAdminPassword/(?P<oid>[-\w]*)',AdminChangedPassword, name='ChangedAdminPassword'),  
     path('Delete/',ShowDeleteForums, name='DeletePage'), 
     re_path(r'DeletePages/',DeleteForums, name='DeleteForum'),  
+    re_path(r'UserManagementPage/(?P<oid>[-\w]*)',ShowUserManagePage, name='UsersManage'),  
+    re_path(r'UserManagementApplied/(?P<oid>[-\w]*)',UserManageAction, name='UsersManageActions'),  
+    re_path(r'AddPasswordPage/(?P<oid>[-\w]*)',ShowAddPasswordPage, name='AddPassword'),  
+    re_path(r'PasswordAdded/(?P<oid>[-\w]*)',AddPasswordToForum, name='passwordAdded'), 
+    re_path(r'ForumPage/(?P<oid>[-\w]*)',MoveToForumManagePage, name='ManageForum'), 
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+

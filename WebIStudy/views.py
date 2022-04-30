@@ -15,9 +15,9 @@ def ShowSuccess(request):
 def ShowForums(request, oid):
     user = User.objects.filter(user_name = oid)
 
-    if(user.exists() == False):
-        user= User(user_name = oid)
-        user.save()
+   # if(user.exists() == False):
+   #     user= User(user_name = oid)                                                ################### Google api ########################
+   #     user.save()
 
 
     user = User.objects.get(user_name = oid)
@@ -46,7 +46,8 @@ def Register(request):
         obj1="Password not match!"
         return render(request, "HTML/Register.html" , {'obj1':obj1})
 
-    user= User(user_name = username,password = passw ,email=email2)
+    str = "WebIStudy/static/Pictures/student.png"
+    user= User(user_name = username,password = passw ,email=email2, picture= str)
     user.save()
 
     return render(request, 'HTML/HomePage.html')
@@ -83,7 +84,8 @@ def ChangePassword(request, oid):
     user.password = passw
     user.save()
 
-    return render(request, "HTML/ForumSelect.html" , {'user':user})
+    forum = Forum.objects.all()
+    return render(request, "HTML/ForumSelect.html" , {'user':user, 'forum':forum})
 
 def AddInformationToUser(request, oid):
     user = User.objects.get(user_name = oid)
@@ -91,13 +93,18 @@ def AddInformationToUser(request, oid):
     User_Study = request.POST['StudyPlace']
     User_degree = request.POST['Degree']
     StudyYear = request.POST['year']
+    Photo = request.POST['myfile']
 
+    str = "WebIStudy/static/Pictures/" + Photo
+
+    user.picture = str
     user.campus = User_Study
     user.degree = User_degree
     user.study_year = StudyYear
     user.save()
 
-    return render(request, "HTML/ForumSelect.html" , {'user':user})
+    forum = Forum.objects.all()
+    return render(request, "HTML/ForumSelect.html" , {'user':user, 'forum':forum})
 
 def ShowManageForums(request):
     forum = Forum.objects.all()
@@ -153,3 +160,83 @@ def DeleteForums(request):
 def ShowDeleteForums(request):
         forum = Forum.objects.all()       
         return render(request, "HTML/DeleteForumPage.html", {'forum':forum})
+
+def ShowUserManagePage(request, oid):
+    admin = Admin.objects.get(user_name = oid)
+    user = User.objects.all()
+    forum = Forum.objects.all()   
+    
+    return render(request, "HTML/UserManagement.html", {'admin':admin, 'user':user, 'forum':forum})  
+
+def UserManageAction(request, oid):
+    Operation = request.POST['oper']
+    ForumManage = request.POST['manage']
+    
+    test = request.POST.getlist('item')
+
+    if Operation == "Assign as Manager":
+        for i in test:
+            a = User.objects.get(user_name = i)
+            a.manager = 'Manager'
+            a.forum_manage = ForumManage
+            a.save()     
+    
+    elif Operation == "Block User":
+        for i in test:
+            a = User.objects.get(user_name = i)
+            a.blocked = 'Blocked'
+            a.save()
+
+
+    elif Operation == "Release User":
+        for i in test:
+            a = User.objects.get(user_name = i)
+            a.blocked = 'Not Blocked'
+            a.save()
+
+    forum = Forum.objects.all()   
+    user = Admin.objects.get(user_name = oid)
+
+    return render(request, "HTML/ForumAdmin.html", {'user':user,'forum':forum})  
+
+def ShowAddPasswordPage(request, oid):
+    admin = Admin.objects.get(user_name = oid)
+    forum = Forum.objects.all()   
+    
+    return render(request, "HTML/AddForumPassword.html", {'admin':admin,'forum':forum})  
+
+def AddPasswordToForum(request, oid):
+    user = Admin.objects.get(user_name = oid)
+
+    passwo = request.POST.getlist('pass')
+
+    Forums_Names = request.POST.getlist('item')
+    Passwords = []
+
+    for i in passwo:
+        if i != '':
+            Passwords.append(i)
+
+    for i in list(range(len(Forums_Names))):
+        name = Forums_Names[i]
+        passw = Passwords[i]
+        f = Forum.objects.get(Forum_name = name)
+        f.password = passw
+        f.save()
+
+
+    forum = Forum.objects.all()  
+    return render(request, "HTML/ForumAdmin.html", {'user':user,'forum':forum})  
+
+def MoveToForumManagePage(request, oid):
+
+    Pass = request.POST['password']
+    ForumName = request.POST['select']
+
+    user = User.objects.get(user_name = oid)
+    forum = Forum.objects.get(Forum_name = ForumName)
+
+    if forum.password == Pass and user.forum_manage == ForumName:
+        return HttpResponse("Work")
+
+    return HttpResponse("Bad!!")
