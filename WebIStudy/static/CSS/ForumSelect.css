@@ -149,7 +149,53 @@ h1{
     margin-top: -40px;
 }
 
-input{
+input[type="password"]{
+    border: none;
+    outline: 0;
+
+    color: #182730;
+    
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .01em;
+    
+    padding: 3px 15px 5px 47px;
+    width: 230px;
+    background-color: #e2e7ea;
+    
+    border-radius: 3px;
+    height: 20px;
+
+    font-family: 'Roboto Condensed', sans-serif;
+
+    margin-top: 60px;
+}
+
+select{
+
+    margin-top: 40px;
+
+    border: none;
+    outline: 0;
+
+    color: #182730;
+    
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .01em;
+    
+    padding: 3px 15px 5px 47px;
+    width: 290px;
+    background-color: #e2e7ea;
+    
+    border-radius: 3px;
+    height: 40px;
+
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+input[type="text"]{
     position: absolute;
     
     border: none;
@@ -282,4 +328,156 @@ input{
 .Profile_Option:first-child
 {
     margin-top: 2px;
+}
+
+
+
+
+
+/*                  */
+.invisible{
+  visibility: hidden;
+}
+.display{
+  display:none;
+}
+.delConf{
+  position: absolute;
+  bottom:250px;
+  right:380px;
+  font-size: 30px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+#butYes {
+  height:60px;
+  width:60px;
+  border-radius: 100px;
+  background-color: green;
+  cursor:pointer;
+  font-size: 30px;
+}
+#butNo {
+  height:60px;
+  width:60px;
+  border-radius: 100px;
+  background-color: red;
+  cursor:pointer;
+  font-size: 30px;
+}
+.fillForum{
+  position: relative;
+  height: 300px;
+  width: 31%;
+
+  position: relative;
+  margin-top: 30px;
+  background-color: white;
+
+}
+#forumname{
+  position: absolute;
+  top:50px;
+  margin-left:35px;
+  height:30px;
+  width:300px;
+  text-align: center;
+  font-size: 20px;
+}
+#myFile{
+  position:relative;
+  top:100px;
+  left:35px;
+  font-size: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+#browse{
+  position: relative;
+  top:80px;
+  left:50px;
+  font-size: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+#submitBut{
+    position: relative;
+    top:120px;
+    left:220px;
+    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.checkbox{
+
+    margin-left: 160px;
+    margin-top: -40px;
+    height: 20px;
+    width: 20px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SpecialKaftor
+{
+    cursor: pointer;
+    background-color: #90e0ef;
+
+    font-family: "GothamPro Medium",serif;
+    font-size: .875rem;
+    font-weight: 700;
+    
+    border-radius: 30px;
+    border: none;
+    
+    height: 54px;
+    width: 120px;
+    text-align: center;
+    transition: all 40ms  ;
+
+    margin-top: 40px;
+}
+
+#lastForum
+{
+    height: 300px;
+    width: 31%;
+
+    margin-top: 30px;
+    
+    background-color: white;
+
+    flex-direction: column;
+    justify-content: space-between;
+
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+
+    display: none;
+}
+#man_button
+{
+    cursor: pointer;
+    position: absolute;
+    font-size: 20px;
+    font-weight: bolder;
+    line-height: 30px;
+    color: #182730;
+    font-weight: 500;
+    padding: 0 15px;
+    
+    border-style: none;
+    letter-spacing: .01em;
+
+
+    margin-top: 30px;
+    margin-left: 300px;
+
+    padding-bottom: 10px;
+
+    background-color: white;
+
+    font-family: 'Roboto Condensed', sans-serif;
 }
