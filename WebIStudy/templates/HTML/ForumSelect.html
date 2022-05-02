@@ -63,7 +63,7 @@
                 {% for i in forum%}
                 <div class="Forum">
                     <img src="{{i.picture.url}}" alt="{{i.picture}}" class="forum_image">
-                    <a>{{i.Forum_name}}</a>
+                    <a href="{% url 'WebIStudy:UserForum' user.user_name i.Forum_name %}" style="text-decoration: none;">{{i.Forum_name}}</a>
                     <p>
                         {{i.Description}}
                     </p>
@@ -72,8 +72,8 @@
 
 
              <div class="Forum2" id="lastForum">
-                
-                <form action="{% url 'WebIStudy:ManageForum' user.user_name%}" method="post">
+             
+                <form action="{% url 'WebIStudy:ManageForum' user.user_name %}" method="post">
                     {% csrf_token %} 
                         <select name="select" id="">
                                 <option value="null">Select Forum</option>
