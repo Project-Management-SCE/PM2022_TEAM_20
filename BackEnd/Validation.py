@@ -28,3 +28,9 @@ def Login_Exists(user_type,username,passw):
 
     return False
 
+def CheckForumExist(forumname):
+    f = Forum.objects.filter(Forum_name = forumname)
+
+    if f.exists():
+        return True
+    return False
