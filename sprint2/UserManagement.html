@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="UserManagement.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <title>User management</title>
+  </head>
+  <body>
+    <nav>
+      <div class="Menu">
+        <img src="images/Istudy_Logo.JPG" alt="logi" class="logo_image">
+        <a href="forum-management.html"><button class="forums_button">Forums</button></a>
+        <a href="UserManagement.html"><button class="Users_button">Users</button></a>
+        <button class="user_botton" onclick="Menu()"></button>
+      </div>
+      <div id="Profile_Select" class="invisible">
+        <a class="Profile_Option" href="updatePersonalInfo.html">Add Info details</a><br>
+        <a class="Profile_Option" href="updateAccountInfo.html">Change Account</a><br>
+        <a class="Profile_Option" href="">Logout</a>
+      </div>
+    </nav>
+    <section>
+      <div class="Search">
+        <h1>User management page</h1>
+        <input class="input" type="text" name="searchbar" id="searchbar" placeholder="&#128270; Search User"  />
+      </div>
+    </section>
+    <div class="container">
+      <table>
+        <tr>
+          <th>Select User</th>
+          <th>Username</th>
+          <th>Email Address</th>
+          <th>Manager status</th>
+          <th>Blocked</th>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="" value="" class="check"></td>
+          <td>Moti_Luhim</td>
+          <td>anas_menumas@hotmail.com</td>
+          <td>Not Manager</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="" value="" class="check"></td>
+          <td>Eli_Copter</td>
+          <td>anis_maamis@gmail.com</td>
+          <td>Not Manager</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="" value="" class="check"></td>
+          <td>Arik_Ayalim</td>
+          <td>mas_tul@gmail.com</td>
+          <td>Not Manager</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="" value="" class="check"></td>
+          <td>Nathan_Barosh</td>
+          <td>mishu@hotmail.com</td>
+          <td>Not Manager</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="" value="" class="check"></td>
+          <td>Kobi_Tahat</td>
+          <td>tisto_vev@gmail.com</td>
+          <td>Not Manager</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="" value="" class="check"></td>
+          <td>Gery_Atri</td>
+          <td>too_old@gmail.com</td>
+          <td>Not Manager</td>
+          <td>No</td>
+        </tr>
+      </table>
+      <div class="options">
+        <button type="button" name="button" class="actions">Block selected user &#9940;</button>
+        <button type="button" name="button" class="actions">Assign as a Forum Manager &#11088;</button>
+      </div>
+      <form id="sendMail" action=""
+        method="POST"
+        enctype="multipart/form-data"
+        name="EmailForm">
+        <button type="submit" value="Submit" class="compose">Compose an Email &#128221;</button>
+      </form>
+    </div>
+    <script src="UserManagement.js"></script>
+  </body>
+</html>
