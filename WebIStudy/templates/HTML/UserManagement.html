@@ -33,11 +33,6 @@
     <section>
       <div class="Search">
         <h1>User management page</h1>
-        <form action="{% url 'WebIStudy:searchuser' admin.user_name %}" method="post">
-          {% csrf_token %} 
-          <input class="input" type="text" name="searchbar" id="searchbar" placeholder="&#128270; Search User"  />
-          <button  class="inpu" style="width: 100px; margin-left: 1150px; margin-top: -40px; position: absolute;"> Search </button>
-        </form>
 
       </div>
     </section>
