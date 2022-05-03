@@ -70,7 +70,7 @@ class Views_Test(TestCase):
 
 class LoginTest(LiveServerTestCase):
     def testLoginUser(self):
-        driver = webdriver.Chrome(executable_path=r"C:/drivers/chromedriver.exe")
+        driver = webdriver.Chrome("chromedriver.exe")
 
         driver.get('http://127.0.0.1:8000/')
 
@@ -89,7 +89,7 @@ class LoginTest(LiveServerTestCase):
         assert 'iStudy - Forum Select' in driver.title
 
     def testLoginAdmin(self):
-        driver = webdriver.Chrome(executable_path=r"C:/drivers/chromedriver.exe")
+        driver = webdriver.Chrome("chromedriver.exe")
 
         driver.get('http://127.0.0.1:8000/')
 
@@ -111,7 +111,7 @@ class LoginTest(LiveServerTestCase):
 class ManageForumTest(LiveServerTestCase):
 
     def testManageForum(self):
-        driver = webdriver.Chrome(executable_path=r"C:/drivers/chromedriver.exe")
+        driver = webdriver.Chrome("chromedriver.exe")
 
         driver.get('http://127.0.0.1:8000/')
 
