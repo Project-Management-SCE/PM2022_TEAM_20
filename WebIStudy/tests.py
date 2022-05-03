@@ -71,8 +71,7 @@ class Views_Test(TestCase):
 
 class LoginTest(LiveServerTestCase):
     def testLoginUser(self):
-        service_object = Service(binary_path)
-        driver = webdriver.Chrome(service=service_object)
+        driver = webdriver.Chrome(executable_path=binary_path)
         
         driver.get('http://127.0.0.1:8000/')
 
@@ -91,8 +90,8 @@ class LoginTest(LiveServerTestCase):
         assert 'iStudy - Forum Select' in driver.title
 
     def testLoginAdmin(self):
-        service_object = Service(binary_path)
-        driver = webdriver.Chrome(service=service_object)
+        
+        driver = webdriver.Chrome(executable_path=binary_path)
 
         driver.get('http://127.0.0.1:8000/')
 
@@ -114,8 +113,8 @@ class LoginTest(LiveServerTestCase):
 class ManageForumTest(LiveServerTestCase):
 
     def testManageForum(self):
-        service_object = Service(binary_path)
-        driver = webdriver.Chrome(service=service_object)
+        
+        driver = webdriver.Chrome(executable_path=binary_path)
 
         driver.get('http://127.0.0.1:8000/')
 
