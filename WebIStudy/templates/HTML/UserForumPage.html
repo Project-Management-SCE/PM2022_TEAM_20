@@ -1,0 +1,128 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'CSS/UserForumPage.css' %}">
+    <title>User Forum Page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <style>
+      .user_botton{
+        background-image: url('{{user.picture.url}}') ;
+      }
+
+      .UserImage
+      {
+        object-fit: cover;
+  
+        border-radius: 100%;
+        border-style: none;
+        background-size: cover;
+        height: 70px;
+        width: 70px;
+      }
+      h1{
+        font-family: 'Bangers', cursive;
+        font-size: 50px;
+        margin-left: -20px;
+        margin-top: 10px;
+        color: rgb(155, 155, 243);
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <nav>
+      <div class="Menu">
+        <a href="{% url 'WebIStudy:Forums' user.user_name %}"><button class="back_to_forum">Back</button></a>
+        <img src="{% static 'Pictures/Istudy_Logo.JPG' %}" alt="logi" class="logo_image">
+        <a href="forum-management.html"><button class="forums_button">Forum Page</button></a>
+        <a href="UserManagement.html"><button class="Users_button">Users</button></a>
+        <button class="user_botton" onclick="Menu()"></button>
+      </div>
+      <div id="Profile_Select" class="invisible">
+        <a class="Profile_Option" href="updatePersonalInfo.html">Add Info details</a><br>
+        <a class="Profile_Option" href="updateAccountInfo.html">Change Account</a><br>
+        <a class="Profile_Option" href="">Logout</a>
+      </div>
+    </nav>
+    <h1>Welcome to <spawn>{{forum.Forum_name}}</spawn> Forum</h1>
+    <div class="container" >
+      
+      {% for i in forumMessage %}
+        <div class="entrance">
+
+
+          {% for j in Pictures %}
+              {% if j.user_name == i.Author %}
+              <div>
+                  <img src="{{j.picture.url}}" alt="{{j.picture.url}}" class="UserImage">
+              </div>
+
+              {% endif %}
+
+
+          {% endfor %}
+
+            <div class="MiddleDiv">
+              <label class="subject" for="">Sender: {{i.Author}}</label>
+              <label class="sender" for="">Subject: {{i.subject}}</label>
+            </div>
+
+            <div>
+              <a  class="view" href="{% url 'WebIStudy:MessagesPage' user.user_name i.Author i.subject %}">View message</a>
+            </div>
+
+        </div>
+    
+      {% endfor %}
+      
+      
+      
+      
+      
+      
+      <button id="addButton" type="button" name="button">Add new message</button>
+      
+      
+      
+      <div class="newMessage display">
+        <form class="message_form" action="{% url 'WebIStudy:Usermessage' user.user_name forum.Forum_name%}" method="post">
+          {% csrf_token %} 
+         
+          <div class="row">
+            <div class="col-25">
+              <label for="fname">Subject:</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="fname" name="name1" placeholder="Type subject">
+            </div>
+          </div>
+        
+          <div class="row">
+            <div class="col-25">
+              <label for="subject">Messege:</label>
+            </div>
+            <div class="col-75">
+              <textarea id="subject" name="name2" placeholder="Write something.." style="height:200px"></textarea>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <button id="post">Post</button>
+          </div>
+        </form>
+      </div>
+    
+    
+    </div>
+
+    
+  <script src="{% static 'JAVASCRIPT/UserForumPage.js' %}"></script>
+  </body>
+</html>
