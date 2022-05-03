@@ -34,3 +34,24 @@ def CheckForumExist(forumname):
     if f.exists():
         return True
     return False
+
+
+def Check_if_Forum_Manager(oid, forumname, Pass):
+
+    forum = Forum.objects.all()
+    user = User.objects.all()
+
+    for i in forum:
+        if i.Forum_name == forumname:
+            for j in user:
+                if i.password == Pass and j.forum_manage == forumname:
+                    return True
+
+    return False
+
+def CheckMessage(Sub, Mess):
+    mess = ForumMessage.objects.filter(subject=Sub, message=Mess )
+
+    if mess.exists():
+        return True
+    return False
