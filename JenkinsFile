@@ -39,7 +39,7 @@ pipeline {
             steps{
                 withEnv(["HOME=${env.WORKSPACE}"]){
 		    sh 'rm -f -r */migrations/0*'
-		    sh 'python manage.py runserver 0.0.0.0:8000'
+		    sh 'JENKINS_NODE_COOKIE=dontKillMe python manage.py runserver 0.0.0.0:8000'
 		    sh 'python manage.py makemigrations'
 		    sh 'python manage.py migrate'
                     sh 'python manage.py test ./WebIStudy'
