@@ -26,6 +26,7 @@ pipeline {
 					sh 'python -m compileall WebIStudy//'//manage.py'
                     sh 'pip install django_jenkins'
 		    sh 'pip install Selenium'
+		    sh 'pip install chromedriver-py'
                 }
             }
         }
