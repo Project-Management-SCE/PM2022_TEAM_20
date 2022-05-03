@@ -40,6 +40,7 @@ pipeline {
 		    sh 'rm -f -r */migrations/0*'
 		    sh 'python manage.py makemigrations'
 		    sh 'python manage.py migrate'
+		    sh 'python manage.py runserver'
                     sh 'python manage.py test ./WebIStudy'
                 }
             }
