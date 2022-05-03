@@ -1,4 +1,5 @@
 from django.test import TestCase, LiveServerTestCase
+from selenium.webdriver.chrome.options import Options
 from .models import *
 from WebIStudy import views
 from WebIStudy import Validation
