@@ -1,13 +1,8 @@
-from django.test import TestCase, LiveServerTestCase
-from selenium.webdriver.chrome.options import Options
-from chromedriver_py import binary_path # this will get you the path variable
+from django.test import TestCase
 from .models import *
 from WebIStudy import views
 from WebIStudy import Validation
 import unittest
-
-from selenium import webdriver
-#from selenium.webdriver.common.keys import keys
 
 class URLTests(TestCase):
     #check urls of a local server pages 
@@ -50,99 +45,3 @@ class Views_Test(TestCase):
        self.assertTrue(True,views.Login_Exists('User','Churkin','111111'))
        self.assertTrue(True,views.Login_Exists('Admin','Maor','123456'))
        self.assertFalse(False,views.Login_Exists('Admin','Vlad','13456'))
-
-
-
-    def test_CheckForumExist(self):
-       self.assertFalse(False,views.CheckForumExist('Computer Arcithecture'))
-       self.assertTrue(True,views.CheckForumExist('Computer Science'))
-       self.assertTrue(True,views.CheckForumExist('Electrical Engineering'))
-       self.assertTrue(True,views.CheckForumExist('Industrial Engineering and Management'))
-
-    def test_Check_if_Forum_Manager(self):
-        self.assertFalse(False,views.Check_if_Forum_Manager('Moshiko', 'Computer Science', '111211')) 
-        self.assertTrue(True,views.Check_if_Forum_Manager('Moshiko', 'Computer Science', '111111')) 
-        self.assertFalse(False,views.Check_if_Forum_Manager('Sergey', 'Electrical Engineering', '123441')) 
-
-
-
-######################################### Integration tests ##########################################
-#----------------------------------------------------------------------------------------------------#
-
-class LoginTest(LiveServerTestCase):
-    def testLoginUser(self):
-        driver = webdriver.Chrome(executable_path=binary_path)
-        
-        driver.get('http://127.0.0.1:8000/')
-
-        user_name = driver.find_element_by_name('username')
-        password = driver.find_element_by_name('password')
-        option = driver.find_element_by_name('Auth')
-
-        user_name.send_keys('Moshiko')
-        password.send_keys('111111')
-
-        option.send_keys('User')
-        submit = driver.find_element_by_name('submit')
-
-        submit.click()
-
-        assert 'iStudy - Forum Select' in driver.title
-
-    def testLoginAdmin(self):
-        
-        driver = webdriver.Chrome(executable_path=binary_path)
-
-        driver.get('http://127.0.0.1:8000/')
-
-        user_name = driver.find_element_by_name('username')
-        password = driver.find_element_by_name('password')
-        option = driver.find_element_by_name('Auth')
-
-        user_name.send_keys('Admin1234')
-        password.send_keys('111111')
-
-        option.send_keys('Admin')
-        submit = driver.find_element_by_name('submit')
-
-        submit.click()
-
-        assert 'iStudy - Forum Select' in driver.title
-
-
-class ManageForumTest(LiveServerTestCase):
-
-    def testManageForum(self):
-        
-        driver = webdriver.Chrome(executable_path=binary_path)
-
-        driver.get('http://127.0.0.1:8000/')
-
-        user_name = driver.find_element_by_name('username')
-        password = driver.find_element_by_name('password')
-        option = driver.find_element_by_name('Auth')
-
-        user_name.send_keys('Moshiko')
-        password.send_keys('111111')
-
-        option.send_keys('User')
-        submit = driver.find_element_by_name('submit')
-
-        submit.click()
-
-        manage_button = driver.find_element_by_name('man_button')
-        
-        manage_button.click()
-
-
-        forum = driver.find_element_by_name('select')
-        password = driver.find_element_by_name('password')
-
-        forum.send_keys('Computer Science')
-        password.send_keys('111111')
-
-        submit = driver.find_element_by_name('kaftor')
-
-        submit.click()
-
-        assert 'Manager Forum Page' in driver.title
