@@ -37,6 +37,7 @@ pipeline {
             steps{
                 withEnv(["HOME=${env.WORKSPACE}"]){
 		    sh 'python manage.py makemigrations --merge'
+		    sh 'y'
 		    sh 'python manage.py migrate'
                     sh 'python manage.py test ./WebIStudy'
                 }
