@@ -29,7 +29,6 @@ pipeline {
 		    sh 'pip install chromedriver-py'
 		    sh 'pip install chromedriver-binary'
 		    sh 'pip install chromedriver-binary-auto'
-		    sh 'pip install python-selenium chromium-chromedriver'
 		 
 		    
 		    sh '''
