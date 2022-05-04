@@ -1,6 +1,7 @@
 from django.test import TestCase, LiveServerTestCase
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from chromedriver_py import binary_path
+import chromedriver_binary
 from .models import *
 from WebIStudy import views
 from WebIStudy import Validation
@@ -71,7 +72,8 @@ class Views_Test(TestCase):
 
 class LoginTest(LiveServerTestCase):
     def testLoginUser(self):
-        driver = webdriver.Chrome(executable_path=binary_path)
+        driver = webdriver.Chrome()
+
         driver.get('http://127.0.0.1:8000/')
 
         user_name = driver.find_element_by_name('username')
@@ -89,7 +91,7 @@ class LoginTest(LiveServerTestCase):
         assert 'iStudy - Forum Select' in driver.title
 
     def testLoginAdmin(self):
-        driver = webdriver.Chrome(executable_path=binary_path)
+        driver = webdriver.Chrome()
 
         driver.get('http://127.0.0.1:8000/')
 
@@ -111,7 +113,7 @@ class LoginTest(LiveServerTestCase):
 class ManageForumTest(LiveServerTestCase):
 
     def testManageForum(self):
-        driver = webdriver.Chrome(executable_path=binary_path)
+        driver = webdriver.Chrome()
 
         driver.get('http://127.0.0.1:8000/')
 
