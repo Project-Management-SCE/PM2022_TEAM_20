@@ -1,5 +1,6 @@
 from django.test import TestCase, LiveServerTestCase
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from chromedriver_py import binary_path
 from .models import *
 from WebIStudy import views
 from WebIStudy import Validation
