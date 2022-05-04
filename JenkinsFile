@@ -29,6 +29,9 @@ pipeline {
 		    sh 'pip install chromedriver-py'
 		    sh 'pip install chromedriver-binary'
 		    sh 'pip install chromedriver-binary-auto'
+		    sh '''
+		    export PATH=$PATH:`chromedriver-path`
+		    '''
                 }
             }
         }
