@@ -29,9 +29,23 @@ pipeline {
 		    sh 'pip install chromedriver-py'
 		    sh 'pip install chromedriver-binary'
 		    sh 'pip install chromedriver-binary-auto'
+		 
+		    
 		    sh '''
-		    export PATH=$PATH:`chromedriver-path`
-		    '''
+                        alias python=python3.7
+                        python -m venv --system-site-packages venv # only for jenkins
+                        python -u setup.py
+                        . venv/bin/activate
+
+                        which chromedriver #/usr/bin/chromedriver  
+                        chromedriver-path #path/to/python/lib/python3.8/site-packages/chromedriver_binary
+                        export PATH=$(chromedriver-path):$PATH
+                        
+                        echo $PATH # just to check the output, your path should be on the beginning
+                        which chromedriver # this should now find the proper chromedriver
+                        
+                    '''
+
                 }
             }
         }
