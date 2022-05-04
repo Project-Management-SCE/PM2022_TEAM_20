@@ -32,7 +32,7 @@ pipeline {
 		 
 		    
 		    sh '''
-                      export PATH=$PATH:`chromedriver-path`
+                      export Path=$Path:`chromedriver-path`
                         
                     '''
 
