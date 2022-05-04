@@ -41,7 +41,6 @@ pipeline {
 		    sh 'rm -f -r */migrations/0*'		    
 		    sh 'python manage.py makemigrations'
 		    sh 'python manage.py migrate'
-		    sh 'apt-get install -y chromium-browser'
 		    sh 'BUILD_ID=dontKillMe nohup python manage.py runserver host_server &'
                     sh 'python manage.py test ./WebIStudy'
                 }
