@@ -32,11 +32,6 @@ pipeline {
 		 
 		    
 		    sh '''
-                        alias python=python3.7
-                        python -m venv --system-site-packages venv # only for jenkins
-                        python -u setup.py
-                        . venv/bin/activate
-
                         which chromedriver #/usr/bin/chromedriver  
                         chromedriver-path #path/to/python/lib/python3.7/site-packages/chromedriver_binary
                         export PATH=$(chromedriver-path):$PATH
