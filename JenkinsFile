@@ -5,8 +5,6 @@ pipeline {
             agent{
                 docker{
                     image 'python:3.7'
-		    image 'cimg/base:stable'
-                    args '-u root'
                 }
             }
             steps{
@@ -14,14 +12,6 @@ pipeline {
                     sh 'python -m pip install django'
                     sh 'python -m pip install -r requirements.txt'
 		    sh 'python -m pip install django-allauth'
-		    
-		    sh '''
-                   	curl https://cli-assets.heroku.com/install.sh | sh;
-                   	heroku container:login
-                   	heroku container:push web --app webistudy
-                  	 heroku container:release web --app webistudy
-               	'''
-
                 }
             }
         }
@@ -64,5 +54,22 @@ pipeline {
                 }
             }
          }
+	 
+	 stage('Deploy to Heroku') {
+            agent {
+                docker {
+                    image 'cimg/base:stable'
+                    args '-u root'
+                }
+            }
+            steps {
+                sh '''
+                    curl https://cli-assets.heroku.com/install.sh | sh;
+                    heroku container:login
+                    heroku container:push web --app sce-flask-template
+                    heroku container:release web --app sce-flask-template
+                '''
+            }
+        }
     }
 }
