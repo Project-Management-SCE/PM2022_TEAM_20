@@ -10,12 +10,9 @@ RUN apk add build-base
 ## INSTALL WITH PIP
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir pillow && \
-    pip install Cmake && \ 
-    pip install --no-cache-dir cffi
 
  
-    
-
+ 
 
     
 COPY requirements.txt requirements.txt
