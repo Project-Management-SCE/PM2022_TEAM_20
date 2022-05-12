@@ -20,7 +20,6 @@ joblib==1.1.0
 nltk==3.7
 oauthlib==3.2.0
 outcome==1.1.0
-Pillow==9.0.1
 pycparser==2.21
 PyJWT==2.3.0
 pyOpenSSL==22.0.0
