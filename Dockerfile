@@ -7,7 +7,7 @@ COPY . .
 RUN apk add build-base
 
     
-## INSTALL WITH PIP
+## INSTALL WITH PIP install
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir pillow 
     
