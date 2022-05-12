@@ -2,11 +2,10 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-from os import environ
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault(debug = True, host = '0.0.0.0', port=environ.get("PORT", 5000))
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'IStudy.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
