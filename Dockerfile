@@ -4,17 +4,6 @@ WORKDIR /Istudy
 
 COPY . .
 
-RUN apt-get update && apt-get install -y \
-    g++ \
-    gcc \
-    python3-dev \ 
-    libjpeg-dev \
-    zlib1g-dev \
-    make \
-    wget \
-    libatlas-base-dev \
-    libffi-dev 
-
 ## INSTALL WITH PIP
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir pillow && \
