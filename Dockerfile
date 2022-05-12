@@ -5,7 +5,7 @@ WORKDIR /Istudy
 COPY . .
 
 RUN apk add build-base
-
+RUN sudo apt install python3-cffi
     
 ## INSTALL WITH PIP install
 RUN pip install --no-cache-dir --upgrade pip && \
