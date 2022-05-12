@@ -2,7 +2,6 @@ asgiref==3.5.0
 async-generator==1.10
 attrs==21.4.0
 certifi==2021.10.8
-cffi==1.15.0
 charset-normalizer==2.0.12
 chromedriver-binary==102.0.5005.27.0
 chromedriver-binary-auto==0.1.1
