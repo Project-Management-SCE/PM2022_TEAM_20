@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-5*f3o0yye)%@o4lw9%xvo2xlem%j2swtg-5^&!!o$@-e&d1nr3
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['webistudy.herokuapp.com']
 
