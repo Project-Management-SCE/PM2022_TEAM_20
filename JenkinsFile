@@ -64,10 +64,13 @@ pipeline {
             }
             steps {
                 sh '''
+		
+			curl https://cli-assets.heroku.com/install.sh | sh;
+                    	heroku container:login
 			heroku login
 			git init
 			git clone https://github.com/Project-Management-SCE/PM2022_TEAM_20.git
-			git push heroku main .webistudy
+			heroku container:git push heroku main .webistudy
 			
 			
                 '''
