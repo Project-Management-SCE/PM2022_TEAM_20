@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-5*f3o0yye)%@o4lw9%xvo2xlem%j2swtg-5^&!!o$@-e&d1nr3'
-
+CSRF_TRUSTED_ORIGINS = ["https://webistudy.herokuapp.com"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
