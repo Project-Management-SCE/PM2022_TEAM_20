@@ -12,7 +12,7 @@ RUN apk update && apk add gcc libc-dev make git libffi-dev openssl-dev python3-d
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir pillow 
     
-
+RUN pip install whitenoise
    
 COPY requirements.txt requirements.txt
 
