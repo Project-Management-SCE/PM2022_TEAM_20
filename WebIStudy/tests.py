@@ -66,3 +66,82 @@ class Views_Test(TestCase):
         self.assertFalse(False,views.Check_if_Forum_Manager('Sergey', 'Electrical Engineering', '123441')) 
 
 
+
+######################################### Integration tests ##########################################
+#----------------------------------------------------------------------------------------------------#
+
+class LoginTest(LiveServerTestCase):
+    def testLoginUser(self):
+        driver = webdriver.Chrome()
+
+        driver.get('http://127.0.0.1:8000/')
+
+        user_name = driver.find_element_by_name('username')
+        password = driver.find_element_by_name('password')
+        option = driver.find_element_by_name('Auth')
+
+        user_name.send_keys('Moshiko')
+        password.send_keys('111111')
+
+        option.send_keys('User')
+        submit = driver.find_element_by_name('submit')
+
+        submit.click()
+
+        assert 'iStudy - Forum Select' in driver.title
+
+    def testLoginAdmin(self):
+        driver = webdriver.Chrome()
+
+        driver.get('http://127.0.0.1:8000/')
+
+        user_name = driver.find_element_by_name('username')
+        password = driver.find_element_by_name('password')
+        option = driver.find_element_by_name('Auth')
+
+        user_name.send_keys('Admin1234')
+        password.send_keys('111111')
+
+        option.send_keys('Admin')
+        submit = driver.find_element_by_name('submit')
+
+        submit.click()
+
+        assert 'iStudy - Forum Select' in driver.title
+
+
+class ManageForumTest(LiveServerTestCase):
+
+    def testManageForum(self):
+        driver = webdriver.Chrome()
+
+        driver.get('http://127.0.0.1:8000/')
+
+        user_name = driver.find_element_by_name('username')
+        password = driver.find_element_by_name('password')
+        option = driver.find_element_by_name('Auth')
+
+        user_name.send_keys('Moshiko')
+        password.send_keys('111111')
+
+        option.send_keys('User')
+        submit = driver.find_element_by_name('submit')
+
+        submit.click()
+
+        manage_button = driver.find_element_by_name('man_button')
+        
+        manage_button.click()
+
+
+        forum = driver.find_element_by_name('select')
+        password = driver.find_element_by_name('password')
+
+        forum.send_keys('Computer Science')
+        password.send_keys('111111')
+
+        submit = driver.find_element_by_name('kaftor')
+
+        submit.click()
+
+        assert 'Manager Forum Page' in driver.title
