@@ -378,6 +378,36 @@ def Search(request, oid):
     return render(request, "HTML/UserManagement.html", {'admin':admin, 'user':user, 'forum':forum})  
 
 
+
+def UserMessageReportMessages(request, oid, Author, Subject):
+    user = User.objects.get(user_name = oid)
+
+    forumMessage = ForumMessage.objects.get(Author = Author, subject = Subject)
+
+    comments = Comments.objects.filter(sender = Author, subject = Subject)
+    Pictures = User.objects.all()
+    return render(request, "HTML/UserMessageReportPage.html", {'user':user,'comments':comments, 'forumMessage':forumMessage, 'Pictures':Pictures})  
+
+def Report(request, oid, Author, Subject ):
+    user = User.objects.get(user_name = oid)
+
+    test = request.POST.getlist('item')
+
+    for i in test:
+        j = i.split('papa1')
+        k = Reports(sender = j[1], subject = j[0], Author=j[2] ,message = j[3])
+        mes = Comments.objects.get(sender = j[1], subject = j[0], Author=j[2] ,message = j[3])
+        mes.report = 'True'
+        mes.save()
+        k.save()
+
+
+    forumMessage = ForumMessage.objects.get(Author = Author, subject = Subject)
+
+    comments = Comments.objects.filter(sender = Author, subject = Subject)
+    Pictures = User.objects.all()
+    return render(request, "HTML/UserMessagePage.html", {'user':user,'comments':comments, 'forumMessage':forumMessage,  'Pictures':Pictures})  
+    
 def ManagerReport(request, oid):
     user = User.objects.get(user_name = oid)
 
