@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'CSS/UserMessagePage.css' %}">
+    <title>User Message Page</title>
+
+    <style>
+      .user_botton{
+        background-image: url('{{user.picture.url}}') ;
+      }
+
+      .UserImage
+      {
+        object-fit: cover;
+        margin-left: 30px;
+        border-radius: 100%;
+        border-style: none;
+        background-size: cover;
+        height: 70px;
+        width: 70px;
+      }
+
+      .repButton
+    {
+        margin-left: 450px;
+        margin-top: 30px;
+        height: 20px;
+        width: 120px;
+        background-color: rgb(255, 189, 66);
+        border-radius: 30px;
+
+    }
+    </style>
+
+  </head>
+  <body>
+    <nav>
+      <div class="Menu">
+        <a href="{% url 'WebIStudy:Forums' user.user_name %}"><button class="back_to_forum">Back to Forum</button></a>
+        <img src="{% static 'Pictures/Istudy_Logo.JPG' %}" alt="logi" class="logo_image">
+        <a href="forum-management.html"><button class="forums_button">Messages</button></a>
+        <button class="user_botton" onclick="Menu()"></button>
+      </div>
+      <div id="Profile_Select" class="invisible">
+        <a class="Profile_Option" href="updatePersonalInfo.html">Add Info details</a><br>
+        <a class="Profile_Option" href="updateAccountInfo.html">Change Account</a><br>
+        <a class="Profile_Option" href="">Logout</a>
+      </div>
+    </nav>
+
+    <form class="container" action="{% url 'WebIStudy:Reports' user.user_name forumMessage.Author forumMessage.subject %}" method="post">
+        {% csrf_token %} 
+      <div  class="entrance2">
+
+        {% for j in Pictures %}
+        {% if j.user_name == forumMessage.Author %}
+        <div class="First">
+          <img src="{{j.picture.url}}" alt="" class="UserImage">
+          <label  for="" style="margin-left: 40px;">{{forumMessage.Author}}</label>
+        </div>
+        {% endif %}
+      {% endfor %}
+        <div class="MiddleDiv">
+          <div class="display" >
+              {{forumMessage.email}}
+          </div>
+          <label  for="">Subject: {{forumMessage.subject}}</label>
+          <label  for="">Message: {{forumMessage.message}}</label> 
+        </div>
+
+      </div>
+
+      {% for i in comments %}
+      <div class="entrance">
+        
+        {% for j in Pictures %}
+        {% if j.user_name == i.Author %}
+
+        <div>
+          <img src="{{j.picture.url}}" alt="" class="UserImage">
+        </div>
+        {% endif %}
+      {% endfor %}
+      
+      <div class="MiddleDiv">
+        <div class="display" >
+          {{i.email}}
+        </div>
+        <label class="subject" for="">Sender: {{i.Author}}</label>
+        <label class="sender" for="">Comment: {{i.message}}</label> 
+        <div style="margin-left: 300px; margin-left: 600px; margin-top: -60px;">
+            <input class="check" type="checkbox" name="item" value="{{forumMessage.subject}}papa1{{forumMessage.Author}}papa1{{i.Author}}papa1{{i.message}}">
+          </div>
+      </div>
+
+      </div>
+
+    
+     {% endfor %}
+
+     <button class="repButton">Report</button>
+    </form>
+    {% load static %}  
+    <script src="{% static '/JAVASCRIPT/UserMessagePage.js' %}"></script>
+  </body>
+</html>
