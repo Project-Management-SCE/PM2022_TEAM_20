@@ -376,3 +376,12 @@ def Search(request, oid):
     forum = Forum.objects.all()   
     
     return render(request, "HTML/UserManagement.html", {'admin':admin, 'user':user, 'forum':forum})  
+
+
+def ManagerReport(request, oid):
+    user = User.objects.get(user_name = oid)
+
+    Pictures = User.objects.all()
+
+    reports = Reports.objects.all()
+    return render(request, "HTML/ManagerReportPage.html", {'user':user,'reports':reports, 'Pictures':Pictures})  
