@@ -104,7 +104,9 @@
               <label class="sender" for="">Subject: {{i.subject}}</label>
             </div>
 
-      
+            <div>
+              <a  class="view" href="{% url 'WebIStudy:DeleteMessageManyMessage' user.user_name i.Author i.subject %}">View message</a>
+            </div>
 
         </div>
     
