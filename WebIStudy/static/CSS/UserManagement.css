@@ -182,15 +182,7 @@ th,td{
   font-size: 20px;
   cursor:pointer;
 }
-.compose{
-  position: relative;
-  left:680px;
-  top:570px;
-  height:50px;
-  width:350px;
-  font-size: 20px;
-  cursor:pointer;
-}
+
 .invisible{
   visibility: hidden;
 }
@@ -253,3 +245,8 @@ select{
   background-color: rgb(218, 218, 255);
   cursor: pointer;
 }
+
+.contact_Button{
+  cursor:pointer;
+}
+
