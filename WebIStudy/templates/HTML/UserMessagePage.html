@@ -1,5 +1,5 @@
 {% load static %}
-<!--User message page-->
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -53,26 +53,35 @@
         {% endif %}
       {% endfor %}
         <div class="MiddleDiv">
+          <div class="display" >
+              {{forumMessage.email}}
+          </div>
           <label  for="">Subject: {{forumMessage.subject}}</label>
-          <label  for="">Message: {{forumMessage.message}}</label>
+          <label  for="">Message: {{forumMessage.message}}</label> 
+          <button class="contact_Button">Compose mail &#128221;</button>
         </div>
 
       </div>
 
       {% for i in comments %}
       <div class="entrance">
-
+        
         {% for j in Pictures %}
         {% if j.user_name == i.Author %}
+
         <div>
           <img src="{{j.picture.url}}" alt="" class="UserImage">
         </div>
         {% endif %}
       {% endfor %}
-
+      
       <div class="MiddleDiv">
+        <div class="display" >
+          {{i.email}}
+        </div>
         <label class="subject" for="">Sender: {{i.Author}}</label>
         <label class="sender" for="">Comment: {{i.message}}</label>
+        <button class="contact_Button">Compose mail &#128221;</button>
       </div>
 
       </div>
@@ -82,7 +91,7 @@
       <button id="addButton" type="button" name="button">Add new comment</button>
       <div class="newMessage display">
         <form class="message_form" action="{% url 'WebIStudy:MessagesCommentsPage' user.user_name forumMessage.Author forumMessage.subject %}" method="post">
-          {% csrf_token %}
+          {% csrf_token %} 
           <div class="row">
             <div class="col-25">
               <label for="subject">Messege:</label>
@@ -98,7 +107,15 @@
         </form>
       </div>
     </div>
-
-  <script src="{% static 'JAVASCRIPT/UserMessagePage.js' %}"></script>
+    <div id="mail" class="display" >
+      <form id="sendMail" action=""
+        method="POST"
+        enctype="multipart/form-data"
+        name="EmailForm">
+        <button type="submit" value="Submit" class="compose">Contact selected user &#128221;</button>
+      </form>
+    </div>
+    {% load static %}  
+    <script src="{% static '/JAVASCRIPT/UserMessagePage.js' %}"></script>
   </body>
 </html>
