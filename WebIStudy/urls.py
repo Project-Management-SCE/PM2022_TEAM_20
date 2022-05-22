@@ -41,6 +41,9 @@ urlpatterns = [
 
     re_path(r'search/(?P<oid>[-\w]*)/',Search, name='searchuser'), 
 
+    re_path(r'fff/(?P<oid>[-\w]*)/(?P<Author>[-\w]*)/(?P<Subject>[-\w]*)',Report, name='Reports'), 
+    re_path(r'MessagesReportShow/(?P<oid>[-\w]*)/(?P<Author>[-\w]*)/(?P<Subject>[-\w]*)',UserMessageReportMessages, name='MessagesReport'),  
+    re_path(r'^ManagerReportPage/(?P<oid>[-\w]*)',ManagerReport, name='reportManager'), 
 
     path('accounts/profile/',HomePage, name='testing'),
 
