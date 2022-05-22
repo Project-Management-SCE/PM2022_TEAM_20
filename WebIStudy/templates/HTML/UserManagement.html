@@ -13,6 +13,7 @@
       .user_botton{
         background-image: url('{{admin.picture.url}}') ;
       }
+
     </style>
 
   </head>
@@ -46,16 +47,16 @@
 
       {% for i in user%}
       <div class="UserProf">
-        <input type="checkbox" value="{{i.user_name}}" name="item">
+        <input type="checkbox" class="check" value="{{i.user_name}}" name="item">
         <img src="{{i.picture.url}}" class="userImage" alt="">
         <p>{{i.user_name}}</p>
         <p>{{i.email}}</p>
         <p>{{i.manager}}</p>
         <p>{{i.blocked}}</p>
+        <p><label class="contact_Button">Contact &#128221;</label></p>
       </div>
 
       {% endfor %}
-
 
       <div class="options">
           <select name="oper" id="">
@@ -73,7 +74,16 @@
           </select>
           <button class="inpu">Submit</button>
       </div>
-
     </form>
+    <div id="mail" class="invisible">
+      <form id="sendMail" action=""
+        method="POST"
+        enctype="multipart/form-data"
+        name="EmailForm">
+        <button type="submit" value="Submit" class="compose">Contact selected user &#128221;</button>
+      </form>
+    </div>
+    {% load static %}  
+    <script src="{% static '/JAVASCRIPT/UserManagement.js' %}"></script>
   </body>
 </html>
