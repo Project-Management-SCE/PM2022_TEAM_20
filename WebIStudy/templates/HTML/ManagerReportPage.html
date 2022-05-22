@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'CSS/UserForumPage.css' %}">
+    <title>User Forum Page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <style>
+      .user_botton{
+        background-image: url('{{user.picture.url}}') ;
+      }
+
+      .UserImage
+      {
+        object-fit: cover;
+  
+        border-radius: 100%;
+        border-style: none;
+        background-size: cover;
+        height: 70px;
+        width: 70px;
+      }
+      h1{
+        font-family: 'Bangers', cursive;
+        font-size: 50px;
+        margin-left: -20px;
+        margin-top: 10px;
+        color: rgb(155, 155, 243);
+      }
+
+      #Rules{
+        position: absolute;
+        margin-top: 10px;
+        margin-left: 20px;
+        background-color: rgb(120, 120, 245);
+        color: white;
+        cursor: pointer;
+        width: 100px;
+      }
+
+      #entrance2{
+        position: relative;
+        border-style:solid;
+        border-width: 2px;
+        width:800px;
+        height:100px;
+        left:100px;
+        margin-top:30px;
+        background-color: #f8f9fb;
+        border-radius: 5px;
+
+        display: none;
+        flex-direction: row;
+       justify-content: space-evenly;
+        align-items: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="Menu">
+        <a href="{% url 'WebIStudy:Forums' user.user_name %}"><button class="back_to_forum">Back</button></a>
+        <img src="{% static 'Pictures/Istudy_Logo.JPG' %}" alt="logi" class="logo_image">
+        <a href=""><button class="forums_button">Reports</button></a>
+        
+        <button class="user_botton" onclick="Menu()"></button>
+      </div>
+      <div id="Profile_Select" class="invisible">
+        <a class="Profile_Option" href="updatePersonalInfo.html">Add Info details</a><br>
+        <a class="Profile_Option" href="updateAccountInfo.html">Change Account</a><br>
+        <a class="Profile_Option" href="">Logout</a>
+      </div>
+    </nav>
+    <h1 style="margin-left: 200px;">Reports</h1> 
+    
+    <div class="container" >
+      
+        <div id="entrance2" >
+            {{forum.Description}}
+        </div>
+      {% for i in reports %}
+        <div class="entrance">
+
+
+          {% for j in Pictures %}
+              {% if j.user_name == i.Author %}
+              <div>
+                  <img src="{{j.picture.url}}" alt="{{j.picture.url}}" class="UserImage">
+              </div>
+
+              {% endif %}
+
+
+          {% endfor %}
+
+            <div class="MiddleDiv">
+              <label class="subject" for="">Sender: {{i.Author}}</label>
+              <label class="sender" for="">Subject: {{i.subject}}</label>
+            </div>
+
+      
+
+        </div>
+    
+      {% endfor %}
+      
+    </div>
+  <script src="{% static 'JAVASCRIPT/UserForumPage.js' %}"></script>
+  </body>
+</html>
