@@ -1,4 +1,3 @@
-/*styles*/
 body{
     min-height: 946px;
     max-width: 1920px;
@@ -273,7 +272,7 @@ h1{
 }
 
 .MiddleDiv{
-
+  position:relative;
   margin-left: 50px;
 
   display: flex;
@@ -284,7 +283,7 @@ h1{
 .First{
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-evenly; 
 }
 
 .entrance2{
@@ -299,11 +298,11 @@ h1{
   border-radius: 5px;
   font-size: 20px;
   font-weight: bold;
-
+  
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
+  align-items: center; 
 }
 /*****************************************************************************/
 
@@ -359,4 +358,16 @@ input[type=submit]:hover {
   content: "";
   display: table;
   clear: both;
+}
+.contact_Button{
+  position:relative;
+  left:400px;
+  cursor:pointer;
+  width:150px;
+  height:22px;
+  background-color: #F5C87A;
+  border-radius: 10px;
+}
+.contact_Button:hover{
+  background-color:#518697;
 }
