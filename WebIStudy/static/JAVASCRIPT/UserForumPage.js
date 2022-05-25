@@ -1,4 +1,3 @@
-//Functionallity
 var flag=0;
 document.querySelector(".user_botton").addEventListener("click",function(){
   if(flag == 0){
@@ -14,8 +13,23 @@ document.querySelector(".user_botton").addEventListener("click",function(){
 document.querySelector("#addButton").addEventListener("click",function(){
   document.querySelector("#addButton").classList.add("display");
   document.querySelector(".newMessage").classList.remove("display");
+
+
 })
 document.querySelector("#post").addEventListener("click",function(){
   document.querySelector(".newMessage").classList.add("display");
   document.querySelector("#addButton").classList.remove("display");
 })
+
+
+function Description()
+{
+    var menu = document.getElementById("entrance2");
+
+    if(menu.style.display == "flex"){
+        menu.style.display="none";
+    }
+    else{
+        menu.style.display="flex";
+    }
+}
