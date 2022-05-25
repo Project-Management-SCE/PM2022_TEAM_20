@@ -2,9 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
 from .Validation import *
+from .preproccessor import *
 
 def HomePage(request):
     return render(request, "HTML/HomePage.html")
+
+def AdminPage(request, oid):
+    user = Admin.objects.get(user_name = oid)
+    forum = Forum.objects.all()
+    return render(request, "HTML/ForumAdmin.html", {'user':user, 'forum':forum})
+
 
 def RegisterPage(request):
     return render(request, "HTML/Register.html")
@@ -21,10 +28,19 @@ def ShowForums(request, oid):
         user.save()
 
 
+    block = Blocklist.objects.filter(user_name = oid)
     user = User.objects.get(user_name = oid)
-
     forum = Forum.objects.all()
-    return render(request, "HTML/ForumSelect.html", {'user':user, 'forum':forum})
+
+    lst = []
+
+    for i in block:
+        lst.append(i.Forum_name)
+
+    block = lst 
+
+    return render(request, "HTML/ForumSelect.html" ,{'user':user , 'forum':forum, 'block':block})
+
 
 def ShowAccountInfo(request, oid):
     user = User.objects.get(user_name = oid)
@@ -65,12 +81,25 @@ def Login(request):
         if Authenticate == 'User':
             user = User.objects.get(user_name = Usrname,password = passw)
             forum = Forum.objects.all()
-            return render(request, "HTML/ForumSelect.html" ,{'user':user , 'forum':forum})
+
+            block = Blocklist.objects.filter(user_name = Usrname)
+
+            lst = []
+
+            for i in block:
+                lst.append(i.Forum_name)
+
+            block = lst 
+
+            if user.blocked == 'Blocked':
+                error =  user.user_name + " you are blocked !"
+                return render(request, 'HTML/HomePage.html', {'error':error})  
+
+            return render(request, "HTML/ForumSelect.html" ,{'user':user , 'forum':forum, 'block':block})
         else:
             user = Admin.objects.get(user_name = Usrname,password = passw)
             forum = Forum.objects.all()
-            f = Forum.objects.get(Forum_name = 'Computer Science')
-            return render(request, "HTML/ForumAdmin.html" ,{'user':user , 'forum':forum , 'f':f})
+            return render(request, "HTML/ForumAdmin.html" ,{'user':user , 'forum':forum})
 
     else:
         return render(request, 'HTML/HomePage.html') 
@@ -81,8 +110,13 @@ def ChangePassword(request, oid):
     passw = request.POST['password']
     passwordconf = request.POST['passwordconf']
     
+    if len(passw)== 0 or len(passwordconf) == 0:
+        error = "No values entered!"
+        return render(request, "HTML/ChangePassword.html" , {'user':user, 'error':error})   
+
     if (Check_Password(passw,passwordconf)):
-        return render(request, "HTML/ChangePassword.html" , {'user':user})
+        error = "Password not matched!"
+        return render(request, "HTML/ChangePassword.html" , {'user':user, 'error':error})
     
     user.password = passw
     user.save()
@@ -111,15 +145,17 @@ def AddInformationToUser(request, oid):
 
 def ShowManageForums(request):
     forum = Forum.objects.all()
-    return render(request, "HTML/ManageForums.html", {'forum':forum})
+    user = Admin.objects.get(user_name ="Admin1234")
+    return render(request, "HTML/ManageForums.html", {'forum':forum, 'user':user})
 
 def ActionAddForums(request):
     name = request.POST['forumname']
     Photo = request.POST['myFile']
-    
+    user = Admin.objects.get(user_name ="Admin1234")
+
     if CheckForumExist(name):
         forum = Forum.objects.all()
-        return render(request, "HTML/ManageForums.html", {'forum':forum})
+        return render(request, "HTML/ManageForums.html", {'forum':forum, 'user':user})
     
     
     str = "WebIStudy/static/Pictures/" + Photo
@@ -129,7 +165,7 @@ def ActionAddForums(request):
     
     forum = Forum.objects.all()
 
-    return render(request, "HTML/ManageForums.html", {'forum':forum})
+    return render(request, "HTML/ManageForums.html", {'forum':forum, 'user':user})
 
 def ShowAdminChangePassword(request, oid):
     user = Admin.objects.get(user_name = oid)
@@ -140,9 +176,14 @@ def AdminChangedPassword(request, oid):
 
     passw = request.POST['password']
     passwordconf = request.POST['passwordconf']
+
+    if len(passw)== 0 or len(passwordconf) == 0:
+        error = "No values entered!"
+        return render(request, "HTML/AdminChangePassword.html" , {'user':user, 'error':error})   
     
     if (Check_Password(passw,passwordconf)):
-        return render(request, "HTML/AdminChangePassword.html" , {'user':user})
+        error = "password not matched!"
+        return render(request, "HTML/AdminChangePassword.html" , {'user':user ,'error':error})
     
     user.password = passw
     user.save()
@@ -161,8 +202,9 @@ def DeleteForums(request):
     return render(request, "HTML/DeleteForumPage.html", {'forum':forum})
     
 def ShowDeleteForums(request):
-        forum = Forum.objects.all()       
-        return render(request, "HTML/DeleteForumPage.html", {'forum':forum})
+        forum = Forum.objects.all() 
+        user = Admin.objects.get(user_name="Admin1234")      
+        return render(request, "HTML/DeleteForumPage.html", {'forum':forum, 'user':user})
 
 def ShowUserManagePage(request, oid):
     admin = Admin.objects.get(user_name = oid)
@@ -214,6 +256,14 @@ def AddPasswordToForum(request, oid):
     passwo = request.POST.getlist('pass')
 
     Forums_Names = request.POST.getlist('item')
+
+    if len(Forums_Names) == 0:
+        admin = Admin.objects.get(user_name = oid)
+        forum = Forum.objects.all()
+        error = "No forum selected!"  
+        return render(request, "HTML/AddForumPassword.html", {'admin':admin,'forum':forum, 'error':error})  
+
+
     Passwords = []
 
     for i in passwo:
@@ -270,6 +320,16 @@ def UserPostAmessage(request, oid, foru):
     Sub = request.POST['name1']
     Mess = request.POST['name2']
 
+    forum = Forum.objects.all()
+
+    if CheckMessage(Sub, Mess):
+        for i in forum:
+            if foru in list(i.Forum_name.split()):
+                foru = i.Forum_name
+        forum = Forum.objects.get(Forum_name = foru)
+        forumMessage = ForumMessage.objects.filter(Forum_name = foru)
+        Pictures = User.objects.all()
+        return render(request, "HTML/UserForumPage.html", {'user':user,'forum':forum, 'forumMessage':forumMessage, 'Pictures':Pictures})  
 
     forum = Forum.objects.all()
 
@@ -278,7 +338,8 @@ def UserPostAmessage(request, oid, foru):
             foru = i.Forum_name
     forum = Forum.objects.get(Forum_name = foru)
 
-    message= ForumMessage(Forum_name = foru,Author = oid ,subject=Sub, message=Mess )
+    #message= ForumMessage(Forum_name = foru,Author = oid ,subject=Sub, message=Mess )
+    message= ForumMessage(Forum_name = foru,Author = oid ,subject=Sub, message=Mess, email = user.email )
     message.save()
 
     forumMessage = ForumMessage.objects.filter(Forum_name = foru)
@@ -302,7 +363,10 @@ def AddCommentForMessage(request, oid, Author, Subject ):
 
     forumMessage = ForumMessage.objects.get(Author = Author, subject = Subject)
 
-    comm= Comments(sender = Author,subject = Subject ,Author=oid, message=Mess )
+    #comm= Comments(sender = Author,subject = Subject ,Author=oid, message=Mess )
+
+    euser = User.objects.get(user_name = oid)
+    comm= Comments(sender = Author,subject = Subject ,Author=oid, message=Mess, email = euser.email )
     comm.save()
 
     comments = Comments.objects.filter(sender = Author, subject = Subject)
@@ -378,6 +442,128 @@ def Search(request, oid):
     return render(request, "HTML/UserManagement.html", {'admin':admin, 'user':user, 'forum':forum})  
 
 
+def ForumManagerUsers(request, oid):
+    admin = User.objects.get(user_name = oid)
+    blocklist = Blocklist.objects.filter(Forum_name = admin.forum_manage)
+    user = User.objects.all()
+
+    lst = []
+
+    for i in blocklist:
+        lst.append(i.user_name)
+    
+    block = lst
+
+
+    return render(request, "HTML/ForumMangerBlockingPage.html", {'admin':admin, 'user':user, 'block':block})
+
+
+
+def Block_User(request, oid):
+    Operation = request.POST['oper']
+    test = request.POST.getlist('item')
+
+    admin = User.objects.get(user_name = oid)
+
+    if Operation == "Block User":
+        for i in test:
+            if not Blocklist.objects.filter(user_name = i , Forum_name = admin.forum_manage).exists():
+                user= Blocklist(Forum_name = admin.forum_manage, user_name = i)
+                user.save()
+    
+    else:
+        for i in test:
+            if Blocklist.objects.filter(user_name = i , Forum_name = admin.forum_manage).exists():
+                a = Blocklist.objects.get(user_name = i , Forum_name = admin.forum_manage)
+                a.delete()
+
+    blocklist = Blocklist.objects.filter(Forum_name = admin.forum_manage)
+
+    lst = []
+
+    for i in blocklist:
+        lst.append(i.user_name)
+    
+    block = lst
+    user = User.objects.all()
+    
+
+    return render(request, "HTML/ForumMangerBlockingPage.html", {'admin':admin, 'user':user, 'block':block})
+
+
+def SearchMessages(request, oid, foru):
+    user = User.objects.get(user_name = oid)
+
+
+    forum = Forum.objects.all()
+
+    for i in forum:
+        if foru in list(i.Forum_name.split()):
+            foru = i.Forum_name
+    
+    forum = Forum.objects.get(Forum_name = foru)
+
+    return render(request, "HTML/UserSearchMessage.html", {'user':user, 'forum':forum})
+
+def ToSearch(request, oid, foru):
+    sub = request.POST['subject']
+    
+    sub = Preprocessor(sub).split()
+
+    user = User.objects.get(user_name = oid)
+    forum = Forum.objects.all()
+
+    for i in forum:
+        if foru in list(i.Forum_name.split()):
+            foru = i.Forum_name
+
+    forum = Forum.objects.get(Forum_name = foru)
+
+    forumMessage = ForumMessage.objects.filter(Forum_name = foru)
+
+
+    lst = []
+
+    for i in forumMessage:
+        if i.subject in sub:
+            lst.append(i)
+    
+    forumMessage = lst
+    Pictures = User.objects.all()
+    return render(request, "HTML/UserForumPage.html", {'user':user,'forum':forum, 'forumMessage':forumMessage , 'Pictures':Pictures})  
+
+
+def AddingDesc(request, oid, foru):
+    user = User.objects.get(user_name = oid)
+    forum = Forum.objects.all()
+
+    for i in forum:
+        if foru in list(i.Forum_name.split()):
+            foru = i.Forum_name
+
+    forum = Forum.objects.get(Forum_name = foru)
+
+    return render(request, "HTML/AddDescription.html", {'user':user,'forum':forum})  
+
+def UpdatingDes(request, oid, foru):
+
+    sub = request.POST['subject']
+    
+    user = User.objects.get(user_name = oid)
+    forum = Forum.objects.all()
+
+    for i in forum:
+        if foru in list(i.Forum_name.split()):
+            foru = i.Forum_name
+
+    forum = Forum.objects.get(Forum_name = foru)
+
+    forum.Description = sub
+    forum.save()
+
+    return render(request, "HTML/AddDescription.html", {'user':user,'forum':forum})  
+
+
 
 def UserMessageReportMessages(request, oid, Author, Subject):
     user = User.objects.get(user_name = oid)
@@ -407,7 +593,7 @@ def Report(request, oid, Author, Subject ):
     comments = Comments.objects.filter(sender = Author, subject = Subject)
     Pictures = User.objects.all()
     return render(request, "HTML/UserMessagePage.html", {'user':user,'comments':comments, 'forumMessage':forumMessage,  'Pictures':Pictures})  
-    
+
 def ManagerReport(request, oid):
     user = User.objects.get(user_name = oid)
 
@@ -415,3 +601,11 @@ def ManagerReport(request, oid):
 
     reports = Reports.objects.all()
     return render(request, "HTML/ManagerReportPage.html", {'user':user,'reports':reports, 'Pictures':Pictures})  
+
+
+def BackToForumManage(request, oid):
+    user = Admin.objects.get(user_name = oid)
+
+    forum = Forum.objects.all()
+
+    return render(request, "HTML/ForumAdmin.html", {'user':user,'forum':forum})  
