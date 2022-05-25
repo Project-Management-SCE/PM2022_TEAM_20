@@ -54,7 +54,6 @@ pipeline {
 		    sh 'python manage.py migrate'
 		    sh 'BUILD_ID=dontKillMe nohup python manage.py runserver host_server &'
                     sh 'python manage.py test ./WebIStudy'
-		    sh 'coverage run manage.py test -v 2  && coverage report'
                 }
             }
          }
