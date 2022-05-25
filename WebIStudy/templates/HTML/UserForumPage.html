@@ -44,6 +44,7 @@
       }
 
       #entrance2{
+        font-family: 'Bangers', cursive;
         position: relative;
         border-style:solid;
         border-width: 2px;
@@ -51,9 +52,11 @@
         height:100px;
         left:100px;
         margin-top:30px;
-        background-color: #f8f9fb;
+        background-color: #cc9de2;
         border-radius: 5px;
-
+        color:white;
+        font-size: 20px;
+        padding-left:5px;
         display: none;
         flex-direction: row;
        justify-content: space-evenly;
@@ -67,20 +70,23 @@
       <div class="Menu">
         <a href="{% url 'WebIStudy:Forums' user.user_name %}"><button class="back_to_forum">Back</button></a>
         <img src="{% static 'Pictures/Istudy_Logo.JPG' %}" alt="logi" class="logo_image">
-        <a href="forum-management.html"><button class="forums_button">Forum Page</button></a>
+        <a href=""><button class="forums_button">Forum Page</button></a>
         
         <button class="user_botton" onclick="Menu()"></button>
       </div>
       <div id="Profile_Select" class="invisible">
-        <a class="Profile_Option" href="updatePersonalInfo.html">Add Info details</a><br>
-        <a class="Profile_Option" href="updateAccountInfo.html">Change Account</a><br>
-        <a class="Profile_Option" href="">Logout</a>
+        <a class="Profile_Option" href="{% url 'WebIStudy:ChangeDetails' user.user_name %}">Change Password</a>
+        <a class="Profile_Option" href="{% url 'WebIStudy:AddInformation' user.user_name %}">Add Information</a>
+        <a class="Profile_Option" href="{% url 'WebIStudy:Login' %}">Logout</a>
       </div>
     </nav>
-    <h1 style="margin-left: -60px;">Welcome to <spawn>{{forum.Forum_name}}</spawn> Forum</h1> 
+    <h1 style="margin-left: -60px;">Welcome to <spawn>{{forum.Forum_name}}</spawn> Forum  <button id="Rules" onclick="Description()">Description & Rules</button> </h1> 
     
     <div class="container" >
       
+        <div id="entrance2">
+            {{forum.Description}}
+        </div>
       {% for i in forumMessage %}
         <div class="entrance">
 
@@ -151,7 +157,7 @@
           </div>
           <br>
           <div class="row">
-            <button id="post">Post</button>
+            <button id="post" name="kaftor">Post</button>
           </div>
         </form>
       </div>
