@@ -41,9 +41,24 @@ urlpatterns = [
 
     re_path(r'search/(?P<oid>[-\w]*)/',Search, name='searchuser'), 
 
+    re_path(r'^Blocking/(?P<oid>[-\w]*)',ForumManagerUsers, name='userManagmentByForumManager'), 
+    re_path(r'^UserBlocking/(?P<oid>[-\w]*)',Block_User, name='BlockUser'), 
+
+    re_path(r'SearchMessage/(?P<oid>[-\w]*)/(?P<foru>[-\w]*)',SearchMessages, name='SearchMessAge'),
+
+    re_path(r'UsrSearchMess/(?P<oid>[-\w]*)/(?P<foru>[-\w]*)',ToSearch, name='searching'),
+    re_path(r'AddingdES/(?P<oid>[-\w]*)/(?P<foru>[-\w]*)',AddingDesc, name='AddDes'),
+    re_path(r'updatE/(?P<oid>[-\w]*)/(?P<foru>[-\w]*)',UpdatingDes, name='Updating'),
+
+
+
     re_path(r'fff/(?P<oid>[-\w]*)/(?P<Author>[-\w]*)/(?P<Subject>[-\w]*)',Report, name='Reports'), 
     re_path(r'MessagesReportShow/(?P<oid>[-\w]*)/(?P<Author>[-\w]*)/(?P<Subject>[-\w]*)',UserMessageReportMessages, name='MessagesReport'),  
+
+
     re_path(r'^ManagerReportPage/(?P<oid>[-\w]*)',ManagerReport, name='reportManager'), 
+
+    re_path(r'^BackToManage/(?P<oid>[-\w]*)',BackToForumManage, name='BacktoManage'), 
 
     path('accounts/profile/',HomePage, name='testing'),
 
