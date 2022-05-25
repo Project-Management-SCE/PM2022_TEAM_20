@@ -69,7 +69,7 @@ pipeline {
                 withEnv(["HOME=${env.WORKSPACE}"]){
 			sh 'python manage.py makemigrations'
 		  	sh 'python manage.py migrate'
-			sh 'python -m coverage run --source="." manage.py test views.py urls.py tests.py Validation.py'
+			sh 'python -m coverage run --source="./WebIStudy/Check/" manage.py test '
 			sh 'python -m coverage report'
                 }
             }
