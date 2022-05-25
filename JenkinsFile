@@ -70,7 +70,7 @@ pipeline {
 			sh 'python manage.py makemigrations'
 		  	sh 'python manage.py migrate'
 	
-			sh 'python -m coverage run --source= "./WebIStudy" manage.py test '
+			sh 'python -m coverage run --source= "./WebIStudy/" manage.py test '
 			sh 'python -m coverage report'
 		  	
                 }
