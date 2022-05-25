@@ -55,3 +55,29 @@ def CheckMessage(Sub, Mess):
     if mess.exists():
         return True
     return False
+
+
+def Check_if_all_space(passlist):
+    for i in passlist:
+        if i != '':
+            return False
+    return True
+
+def CheckBlock(username):
+    user = user = User.objects.all()
+
+    for i in user:
+        if i.user_name == username:
+            if i.blocked == 'Blocked':
+                return True
+    return False
+
+def checkComment(username, subject, forum):
+
+    comment = ForumMessage.objects.all()
+
+    for i in comment:
+        if i.Forum_name == forum and i.Author == username and i.subject == subject:
+            return True
+    
+    return False
