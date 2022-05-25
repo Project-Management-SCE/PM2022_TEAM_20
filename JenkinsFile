@@ -67,9 +67,9 @@ pipeline {
             }
             steps{
                 withEnv(["HOME=${env.WORKSPACE}"]){
-		dir("WebIStudy"){
 			sh 'python manage.py makemigrations'
 		  	sh 'python manage.py migrate'
+		dir("WebIStudy"){
 			sh 'python -m coverage run --source= "." manage.py test'
 			sh 'python -m coverage report'
 		  }	
