@@ -43,6 +43,8 @@
         <a href="{% url 'WebIStudy:Forums' user.user_name %}"><button class="back_to_forum">Back</button></a>
         <img src="{% static 'Pictures/Istudy_Logo.JPG' %}" alt="logi" class="logo_image">
         <a href="forum-management.html"><button class="forums_button">Forum Page</button></a>
+        <a href="{% url 'WebIStudy:userManagmentByForumManager' user.user_name %}"><button class="Users_button">Users</button></a>
+        <a href="{% url 'WebIStudy:AddDes' user.user_name forum.Forum_name %}"><button class="Users_button" style="margin-left: 540px;">Add Description</button></a>
         <a class="Users_button" style="margin-left:710px; border-bottom-style: none; text-decoration: none;" href="{% url 'WebIStudy:reportManager' user.user_name %}">Reports</a>
         <button class="user_botton" onclick="Menu()"></button>
       </div>
