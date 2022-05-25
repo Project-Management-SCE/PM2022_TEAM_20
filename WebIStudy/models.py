@@ -72,6 +72,14 @@ class Comments(models.Model):
         return f'sender: {self.sender}, subject: {self.subject}, Author:{self.Author}, message:{self.message}'
 
 
+class Blocklist(models.Model):
+    Forum_name = models.CharField(max_length=300)
+    user_name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f'Forum_name: {self.Forum_name}, user_name: {self.user_name}'
+
+
 class Reports(models.Model):
     sender = models.CharField(max_length=300)
     subject = models.CharField(max_length=50)
