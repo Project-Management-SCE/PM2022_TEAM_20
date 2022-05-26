@@ -85,7 +85,7 @@ section{
     border-style: none;
     letter-spacing: .01em;
     margin-top: 30px;
-    margin-left: 410px;
+    margin-left: 450px;
     padding-bottom: 10px;
     background-color: white;
     font-family: 'Roboto Condensed', sans-serif;
@@ -144,7 +144,7 @@ section{
     background-color: #e2e7ea;
     border-radius: 3px;
     height: 20px;
-    margin-left: 800px;
+    right: 600px;
     margin-top: -40px;
     font-family: 'Roboto Condensed', sans-serif;
 }
@@ -237,7 +237,7 @@ select{
 }
 
 .inpu{
-  margin-left: 30px;
+  right: 470px;
   width: 200px;
   height: 30px;
   border-radius: 30px;
