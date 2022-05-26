@@ -64,6 +64,7 @@
 
       {% csrf_token %} 
       {% for i in comments %}
+      
       <div class="entrance">
 
         {% for j in Pictures %}
@@ -75,8 +76,14 @@
           {% endif %}
         {% endfor %}
         <div class="MiddleDiv">
+          
+          {% if i.report == "True" %}
+          <label class="subject" for="" style="color: red;">Sender: {{i.Author}}</label>
+          <label class="sender" for="" style="color: red;">Comment: {{i.message}}</label>
+          {% else %}
           <label class="subject" for="">Sender: {{i.Author}}</label>
           <label class="sender" for="">Comment: {{i.message}}</label>
+          {% endif %}
         </div>
 
         <div style="margin-left: 300px;">
