@@ -173,10 +173,10 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'HTML/ManageForums.html')
 
 
-    def test_project_search_url_POST(self):
-        response = self.client.post(self.searching_url, {
-            'subject': 'Jenkins Moshiko',
-        })
+  #  def test_project_search_url_POST(self):
+   #     response = self.client.post(self.searching_url, {
+    #        'subject': 'Jenkins Moshiko',
+     #   })
 
 
         self.assertEquals(response.status_code, 200)
