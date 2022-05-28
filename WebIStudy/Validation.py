@@ -1,5 +1,6 @@
 from .models import *
 
+#This is validation
 def isExistsUser(username, email2 = None):
     user = User.objects.filter(user_name = username)
     if  user.exists():
