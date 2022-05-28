@@ -5,25 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width initial_scale=1.0">
-    <title>forum management</title> 
+    <title>Delete Forum Page</title> 
     <link rel="stylesheet" href="{% static 'CSS/forum-management.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+
+    <style>
+      .user_botton{
+        background-image: url('{{user.picture.url}}') ;
+      }
+    </style>
+
   </head>
   <body>
     <nav>
       <div class="Menu">
         <img src="{% static 'Pictures/Istudy_Logo.JPG' %}" alt="logi" class="logo_image">
-        <a href="forum-management.html"><button class="forums_button">Forums</button></a>
+        <a href="{% url 'WebIStudy:BacktoManage' user.user_name %}"><button class="forums_button">Back to Forums</button></a>
         
-        <button class="user_botton" onclick="Menu()"></button>
+        <button class="user_botton" ></button>
       </div>
-      <div id="Profile_Select" class="invisible">
-        <a class="Profile_Option" href="updatePersonalInfo.html">Add Info details</a><br>
-        <a class="Profile_Option" href="updateAccountInfo.html">Change Account</a><br>
-        <a class="Profile_Option" href="">Logout</a>
-      </div>
+
     </nav>
     <section>
       <div class="Search">
@@ -55,6 +59,6 @@
         </div>
     </form>
     </main>
-     
+    <script src="{% static 'JAVASCRIPT/forum-management.js' %}"></script>
     </body>
 </html>

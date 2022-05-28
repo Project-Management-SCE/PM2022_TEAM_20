@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'CSS/UserForumPage.css' %}">
-    <title>User Forum Page</title>
+    <title>Manager Report Page</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,11 +71,7 @@
         
         <button class="user_botton" onclick="Menu()"></button>
       </div>
-      <div id="Profile_Select" class="invisible">
-        <a class="Profile_Option" href="updatePersonalInfo.html">Add Info details</a><br>
-        <a class="Profile_Option" href="updateAccountInfo.html">Change Account</a><br>
-        <a class="Profile_Option" href="">Logout</a>
-      </div>
+
     </nav>
     <h1 style="margin-left: 200px;">Reports</h1> 
     
@@ -105,7 +101,7 @@
             </div>
 
             <div>
-              <a  class="view" href="{% url 'WebIStudy:DeleteMessageManyMessage' user.user_name i.Author i.subject %}">View message</a>
+              <a  class="view" href="{% url 'WebIStudy:DeleteMessageManyMessage' user.user_name i.sender i.subject %}">View message</a>
             </div>
 
         </div>

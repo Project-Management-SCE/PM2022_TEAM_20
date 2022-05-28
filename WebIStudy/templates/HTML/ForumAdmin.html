@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width initial_scale="1.0">
 
         
-        <title>iStudy - Forum Select</title>
+        <title>Forum Admin</title>
         <link rel="stylesheet" href="{% static 'CSS/ForumSelect.css' %}">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +20,9 @@
         <style>
             .user_botton{
               background-image: url('{{user.picture.url}}') ;
+            }
+            #searchbar{
+                right: 450px;
             }
           </style>
 
@@ -65,7 +68,7 @@
                         <img src="{{i.picture.url}}" alt="{{i.picture}}" class="forum_image">
                         <a>{{i.Forum_name}}</a>
                         <p>
-                            {{i.Description}}
+                            
                         </p>
                     </div>
                  {% endfor %}

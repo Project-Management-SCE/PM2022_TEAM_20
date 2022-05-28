@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width initial_scale="1.0">
 
         
-        <title>iStudy - Forum Select</title>
+        <title>Forum Select</title>
         <link rel="stylesheet" href="{% static 'CSS/ForumSelect.css' %}">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,13 +35,13 @@
                 <button class="foruns_button" id="for_button">Forums</button>
 
                 {% if user.manager == "Manager"%}
-                    <button class="foruns_button2" id="man_button" style="margin-left: 400px;" onclick="Manage()">Manage</button>
+                    <button class="foruns_button2" id="man_button" name="man_button" style="margin-left: 400px;" onclick="Manage()">Manage</button>
                 {% endif %}
-                <button class="user_botton" onclick="Menu()"></button>
+                <button class="user_botton" name="user_botto" id="user_botto" onclick="Menu()"></button>
             </div>
 
             <div id="Profile_Select">
-                <a class="Profile_Option" href="{% url 'WebIStudy:ChangeDetails' user.user_name %}">Change Password</a>
+                <a class="Profile_Option" href="{% url 'WebIStudy:ChangeDetails' user.user_name %}" name="changepass" id="changepass">Change Password</a>
                 <a class="Profile_Option" href="{% url 'WebIStudy:AddInformation' user.user_name %}">Add Information</a>
                 <a class="Profile_Option" href="{% url 'WebIStudy:Login' %}">Logout</a>
             </div>
@@ -51,7 +51,7 @@
         <section>
             <div class="Search">
                 <h1>Forums</h1>
-                <input type="text" name="searchbar" id="searchbar" placeholder="&#128270 Search Forum">
+              
             </div>
 
         </section>
@@ -61,13 +61,15 @@
             <div class="Display" style="align-content:flex-start;">
                 
                 {% for i in forum%}
+                    {% if not i.Forum_name in block %}
                 <div class="Forum">
                     <img src="{{i.picture.url}}" alt="{{i.picture}}" class="forum_image">
-                    <a href="{% url 'WebIStudy:UserForum' user.user_name i.Forum_name %}" style="text-decoration: none;">{{i.Forum_name}}</a>
+                    <a href="{% url 'WebIStudy:UserForum' user.user_name i.Forum_name %}" name="{{i.Forum_name}}" style="text-decoration: none;">{{i.Forum_name}}</a>
                     <p>
-                        {{i.Description}}
+                        
                     </p>
                 </div>
+                    {% endif %}
              {% endfor %}
 
 
@@ -84,7 +86,7 @@
 
                     <input type="password" name="password" id="" placeholder="password">
 
-                    <button class="SpecialKaftor">Submit</button>
+                    <button class="SpecialKaftor" name="kaftor">Submit</button>
                 </form>
             </div> 
         </main>

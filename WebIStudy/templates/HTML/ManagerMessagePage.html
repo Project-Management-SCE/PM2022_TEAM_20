@@ -35,11 +35,7 @@
         <a href="forum-management.html"><button class="forums_button">Comments</button></a>
         <button class="user_botton" onclick="Menu()"></button>
       </div>
-      <div id="Profile_Select" class="invisible">
-        <a class="Profile_Option" href="updatePersonalInfo.html">Add Info details</a><br>
-        <a class="Profile_Option" href="updateAccountInfo.html">Change Account</a><br>
-        <a class="Profile_Option" href="">Logout</a>
-      </div>
+
     </nav>
 
     <form class="container" action="{% url 'WebIStudy:DeleteMessageManyMessage' user.user_name forumMessage.Author forumMessage.subject %}" method="post">

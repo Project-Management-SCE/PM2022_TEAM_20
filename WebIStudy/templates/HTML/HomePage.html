@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>iStudy - HomePage</title>
+        <title>HomePage</title>
 		<link rel="stylesheet" href="{% static 'CSS/HomePage.css' %}">
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <meta name="google-signin-client_id" content="678154098238-b6q0hdk8mmcdg1v1vohr7jf4sslj6vdt.apps.googleusercontent.com">
@@ -46,9 +46,12 @@
                                 <a href="{% provider_login_url 'google' %}" class="googlebu" style="text-decoration:none; position: absolute; font-size: 30px; margin-top: -10px; background-color: aquamarine; border-radius: 50%; width: 40px; height: 40px; color: black;">G</a>
                                 {% endif %}
                            </div>
-                            <button class="Sign_in_Button" >Sign in</button>
-
-                    
+                            <button class="Sign_in_Button" name="submit">Sign in</button>
+                           
+                            <div style="margin-top: 150px; color:red; margin-left: 60px; position: absolute;">
+                                {{ error }}
+                           </div>
+                          
                     </div>
 
                 </form>

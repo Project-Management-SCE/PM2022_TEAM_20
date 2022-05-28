@@ -48,11 +48,7 @@
         <a class="Users_button" style="margin-left:710px; border-bottom-style: none; text-decoration: none;" href="{% url 'WebIStudy:reportManager' user.user_name %}">Reports</a>
         <button class="user_botton" onclick="Menu()"></button>
       </div>
-      <div id="Profile_Select" class="invisible">
-        <a class="Profile_Option" href="updatePersonalInfo.html">Add Info details</a><br>
-        <a class="Profile_Option" href="updateAccountInfo.html">Change Account</a><br>
-        <a class="Profile_Option" href="">Logout</a>
-      </div>
+
     </nav>
     <h1>Welcome to <spawn>{{forum.Forum_name}}</spawn> Forum management page</h1>
     <form class="container" action="{% url 'WebIStudy:UsermessageDelete' user.user_name forum.Forum_name %}" method="post">

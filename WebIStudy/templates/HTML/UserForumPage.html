@@ -74,11 +74,7 @@
         
         <button class="user_botton" onclick="Menu()"></button>
       </div>
-      <div id="Profile_Select" class="invisible">
-        <a class="Profile_Option" href="{% url 'WebIStudy:ChangeDetails' user.user_name %}">Change Password</a>
-        <a class="Profile_Option" href="{% url 'WebIStudy:AddInformation' user.user_name %}">Add Information</a>
-        <a class="Profile_Option" href="{% url 'WebIStudy:Login' %}">Logout</a>
-      </div>
+
     </nav>
     <h1 style="margin-left: -60px;">Welcome to <spawn>{{forum.Forum_name}}</spawn> Forum  <button id="Rules" onclick="Description()">Description & Rules</button> </h1> 
     
@@ -128,6 +124,10 @@
         <div id="addButton" style="border-style:solid ; border-width: 2px; text-align: center; padding-top: 6px; margin-left: 200px; margin-top: -40px; height: 30px;">
           <a  id="Search" name="Search" style="position: inherit; margin-top: 3px; text-decoration: none; " href="{% url 'WebIStudy:SearchMessAge' user.user_name forum.Forum_name%}">Search Message</a>
         </div id="addButton">
+
+        <div style="margin-left:400px; margin-top:40px; color:red;">
+          {{error}}
+        </div>
       </div>
 
       
