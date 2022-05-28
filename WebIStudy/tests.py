@@ -11,7 +11,7 @@ from selenium import webdriver
 from django.urls import reverse
 import json
 
-#from selenium.webdriver.common.keys import keys
+###from selenium.webdriver.common.keys import keys
 
 class URLTests(TestCase):
     #check urls of a local server pages 
