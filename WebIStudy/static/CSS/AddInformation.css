@@ -1,5 +1,3 @@
-/****/
-
 body{
     margin:0px;
 
@@ -8,8 +6,6 @@ body{
 
     background-color: #edf6f9;
 }
-
-/* adding information */
 
 main{
     display: flex;

@@ -85,16 +85,21 @@ nav{
     margin-left: 1140px;
 }
 #Profile_Select{
-    position: fixed;
-    background-color: white;
-    margin-left: 1200px;
-    margin-top: 70px;
-    width: 200px;
-    height: 100px;
-    flex-direction: column;
-    justify-content: space-between;
-    justify-items: flex-start;
-    flex-wrap: wrap;
+  position: fixed;
+  background-color: white;
+  margin-left: 1200px;
+  margin-top: 70px;
+
+  width: 200px;
+  height: 100px;
+
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-items: flex-start;
+  flex-wrap: wrap;
+
+
 }
 .Profile_Option{
     font-family: 'Roboto Condensed', sans-serif;
