@@ -24,7 +24,7 @@ def ShowForums(request, oid):
 
     if(user.exists() == False):
         str = "WebIStudy/static/Pictures/student.png"
-        user= User(user_name = oid, picture = str)                                                ################### Google api ########################
+        user= User(user_name = oid, picture = str)                                                
         user.save()
 
 
