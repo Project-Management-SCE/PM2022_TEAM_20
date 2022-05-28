@@ -77,6 +77,10 @@ def Login(request):
     passw = request.POST['password']
     Authenticate = request.POST['Auth']
 
+    if Authenticate != 'User' and Authenticate != 'Admin':
+        error = 'Please select Authentication!'
+        return render(request, 'HTML/HomePage.html', {'error':error}) 
+
     if(Login_Exists(Authenticate,Usrname,passw) == False):
         if Authenticate == 'User':
             user = User.objects.get(user_name = Usrname,password = passw)
@@ -127,6 +131,13 @@ def ChangePassword(request, oid):
 def AddInformationToUser(request, oid):
     user = User.objects.get(user_name = oid)
 
+    username =  user.user_name
+    passw =  user.password
+    emil = user.email
+    Blocked = user.blocked
+    mAnager = user.manager
+    Forum_manage = user.forum_manage
+
     User_Study = request.POST['StudyPlace']
     User_degree = request.POST['Degree']
     StudyYear = request.POST['year']
@@ -134,10 +145,10 @@ def AddInformationToUser(request, oid):
 
     str = "WebIStudy/static/Pictures/" + Photo
 
-    user.picture = str
-    user.campus = User_Study
-    user.degree = User_degree
-    user.study_year = StudyYear
+    user.delete()
+
+    user = User(user_name = username, password = passw, email = emil, blocked = Blocked, manager = mAnager , forum_manage = Forum_manage, picture = str , campus = User_Study, degree = User_degree, study_year = StudyYear)
+
     user.save()
 
     forum = Forum.objects.all()
@@ -173,6 +184,8 @@ def ShowAdminChangePassword(request, oid):
 
 def AdminChangedPassword(request, oid):
     user = Admin.objects.get(user_name = oid)
+    Eml = user.email
+    str = "WebIStudy/static/Pictures/20220426192432adminMoshiko.png"
 
     passw = request.POST['password']
     passwordconf = request.POST['passwordconf']
@@ -185,6 +198,9 @@ def AdminChangedPassword(request, oid):
         error = "password not matched!"
         return render(request, "HTML/AdminChangePassword.html" , {'user':user ,'error':error})
     
+    user.delete()
+
+    user = Admin(user_name = oid, password = passw, email =Eml, picture = str )
     user.password = passw
     user.save()
 
@@ -193,13 +209,13 @@ def AdminChangedPassword(request, oid):
 
 def DeleteForums(request): 
     test = request.POST.getlist('item')
-
+    user = Admin.objects.get(user_name = "Admin1234")
     for i in test:
         a = Forum.objects.get(Forum_name = i)
         a.delete()
 
     forum = Forum.objects.all()
-    return render(request, "HTML/DeleteForumPage.html", {'forum':forum})
+    return render(request, "HTML/DeleteForumPage.html", {'forum':forum, 'user':user})
     
 def ShowDeleteForums(request):
         forum = Forum.objects.all() 
@@ -320,6 +336,21 @@ def UserPostAmessage(request, oid, foru):
     Sub = request.POST['name1']
     Mess = request.POST['name2']
 
+    if len(Sub.split()) > 1:
+        Pictures = User.objects.all()
+        forum = Forum.objects.all()
+        for i in forum:
+            if foru in list(i.Forum_name.split()):
+                foru = i.Forum_name
+
+
+        forum = Forum.objects.get(Forum_name = foru)
+        forumMessage = ForumMessage.objects.filter(Forum_name = foru)
+
+        error = "Subject must be only one word!"
+
+        return render(request, "HTML/UserForumPage.html", {'user':user,'forum':forum, 'forumMessage':forumMessage , 'Pictures':Pictures, 'error':error})  
+
     forum = Forum.objects.all()
 
     if CheckMessage(Sub, Mess):
@@ -413,9 +444,16 @@ def deleteMessageManyMessage(request, oid, Author, Subject ):
 
     test = request.POST.getlist('item')
 
+    
+
     for i in test:
         j = i.split('papa1')
         k = Comments.objects.get(sender = j[1], subject = j[0], Author=j[2] ,message = j[3])
+        report = Reports.objects.filter(sender = j[1], subject = j[0], Author=j[2] ,message = j[3])
+
+        if report.exists():
+            report = Reports.objects.get(sender = j[1], subject = j[0], Author=j[2] ,message = j[3])
+            report.delete()
         k.delete()
 
 

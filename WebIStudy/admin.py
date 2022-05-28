@@ -6,4 +6,6 @@ admin.site.register(Admin)
 admin.site.register(Forum)
 admin.site.register(ForumMessage)
 admin.site.register(Comments)
+admin.site.register(Blocklist)
+admin.site.register(Reports)
 # Register your models here.
