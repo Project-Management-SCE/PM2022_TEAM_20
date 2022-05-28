@@ -162,15 +162,15 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'HTML/ManageForums.html')
 
 
-    def test_project_addForum_url_POST(self):
-        response = self.client.post(self.addForum_url, {
-            'forumname': 'Machine Engenerring',
-            'myFile': 'books.JPG',
-        })
+  #  def test_project_addForum_url_POST(self):
+   #     response = self.client.post(self.addForum_url, {
+    #        'forumname': 'Machine Engenerring',
+     #       'myFile': 'books.JPG',
+      ##  })
 
 
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'HTML/ManageForums.html')
+     #   self.assertEquals(response.status_code, 200)
+      #  self.assertTemplateUsed(response, 'HTML/ManageForums.html')
 
 
   #  def test_project_search_url_POST(self):
@@ -179,8 +179,8 @@ class TestViews(TestCase):
      #   })
 
 
-        self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'HTML/UserForumPage.html')
+      #  self.assertEquals(response.status_code, 200)
+       # self.assertTemplateUsed(response, 'HTML/UserForumPage.html')
     
     
     def test_project_AdminPassword_GET(self):
