@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import *
 from .Validation import *
 from .preproccessor import *
+import nltk
 
 def HomePage(request):
     return render(request, "HTML/HomePage.html")
@@ -544,6 +545,7 @@ def SearchMessages(request, oid, foru):
     return render(request, "HTML/UserSearchMessage.html", {'user':user, 'forum':forum})
 
 def ToSearch(request, oid, foru):
+    nltk.download('stopwords')
     sub = request.POST['subject']
     
     sub = Preprocessor(sub).split()
